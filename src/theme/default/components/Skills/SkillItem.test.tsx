@@ -4,7 +4,7 @@ import { fireEvent, render, screen, waitForElementToBeRemoved } from "@testing-l
 
 import { SkillItem } from "./SkillItem";
 import { SkillsContext } from "./Skills";
-import sampleData from "../../../sampleData.json";
+import { reactSkill } from "./testUtils";
 
 // Mock the Iconify Icon component
 jest.mock("@iconify/react", () => ({
@@ -18,9 +18,23 @@ jest.mock("@iconify/react", () => ({
 const theme = createTheme();
 
 describe("SkillItem", () => {
-  const sampleUserSkill = sampleData.data.resume.skillsForUser[0] as SkillForUser; // CSS skill
-  const sampleProjectSkill = sampleData.data.resume.companies[0].positions[0].projects[0]
-    .skillsForProject[0] as SkillForProject; // TypeScript skill
+  const sampleProjectSkill: SkillForProject = {
+    id: "project-skill-1",
+    description: "Used TypeScript for type-safe development",
+    skillForUser: {
+      id: "user-skill-1",
+      userId: "user1",
+      skill: {
+        id: "skill1",
+        name: "TypeScript",
+        icon: "devicon:typescript",
+      },
+      icon: null,
+      description: "TypeScript development",
+      yearStarted: 2020,
+      totalYears: null,
+    },
+  };
 
   const renderWithTheme = (
     skill: SkillForUser | SkillForProject,
@@ -37,31 +51,31 @@ describe("SkillItem", () => {
 
   describe("User Skill", () => {
     it("should render skill name correctly", () => {
-      renderWithTheme(sampleUserSkill);
-      expect(screen.getByText("CSS")).toBeInTheDocument();
+      renderWithTheme(reactSkill);
+      expect(screen.getByText("React")).toBeInTheDocument();
     });
 
     it("should render skill icon when available", () => {
-      renderWithTheme(sampleUserSkill);
+      renderWithTheme(reactSkill);
       const iconElement = screen.getByTestId("mocked-icon");
       expect(iconElement).toBeInTheDocument();
-      expect(iconElement).toHaveAttribute("data-icon", "logos:css-3");
+      expect(iconElement).toHaveAttribute("data-icon", "devicon:react");
     });
 
     it("should open dialog when clicked", () => {
-      renderWithTheme(sampleUserSkill);
-      const button = screen.getByText("CSS");
+      renderWithTheme(reactSkill);
+      const button = screen.getByText("React");
       fireEvent.click(button);
       expect(screen.getByRole("dialog")).toBeInTheDocument();
 
-      if (sampleUserSkill.description) {
-        expect(screen.getByText(sampleUserSkill.description)).toBeInTheDocument();
+      if (reactSkill.description) {
+        expect(screen.getByText(reactSkill.description)).toBeInTheDocument();
       }
     });
 
     it("should close dialog when close button is clicked", async () => {
-      renderWithTheme(sampleUserSkill);
-      const button = screen.getByText("CSS");
+      renderWithTheme(reactSkill);
+      const button = screen.getByText("React");
       fireEvent.click(button);
       const closeButton = screen.getByRole("button", { name: /close/i });
       fireEvent.click(closeButton);
@@ -89,7 +103,7 @@ describe("SkillItem", () => {
   describe("Button Styling", () => {
     it("should be disabled when no description is provided", () => {
       const skillWithoutDescription = {
-        ...sampleUserSkill,
+        ...reactSkill,
         description: null,
       };
       renderWithTheme(skillWithoutDescription);
@@ -98,7 +112,7 @@ describe("SkillItem", () => {
     });
 
     it("should have correct border color when description is present", () => {
-      renderWithTheme(sampleUserSkill);
+      renderWithTheme(reactSkill);
       const button = screen.getByRole("button");
       expect(button).toHaveStyle({ borderColor: "lawngreen" });
     });

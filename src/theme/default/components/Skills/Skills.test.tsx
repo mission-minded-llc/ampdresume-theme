@@ -1,36 +1,8 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+import { javascriptSkill, reactSkill, sampleSkills } from "./testUtils";
 
 import { SkillForUser } from "@/types";
 import { Skills } from "./Skills";
-
-const mockSkills: SkillForUser[] = [
-  {
-    id: "1",
-    userId: "user1",
-    skill: {
-      id: "skill1",
-      name: "React",
-      icon: "devicon:react",
-    },
-    icon: null,
-    description: "Building responsive, accessible component-based UIs",
-    yearStarted: 2019,
-    totalYears: null,
-  },
-  {
-    id: "2",
-    userId: "user1",
-    skill: {
-      id: "skill2",
-      name: "JavaScript",
-      icon: "logos:javascript",
-    },
-    icon: null,
-    description: "Modern ES6+ JavaScript",
-    yearStarted: 2018,
-    totalYears: null,
-  },
-];
 
 describe("Skills", () => {
   beforeAll(() => {
@@ -44,7 +16,7 @@ describe("Skills", () => {
   });
 
   it("renders the Skills component with experience layout by default", () => {
-    render(<Skills skillType="user" skillsForUser={mockSkills} />);
+    render(<Skills skillType="user" skillsForUser={sampleSkills} />);
 
     // Check if title is rendered
     expect(screen.getByText("Skills")).toBeInTheDocument();
@@ -63,7 +35,7 @@ describe("Skills", () => {
   });
 
   it("toggles between experience and cloud layouts", () => {
-    render(<Skills skillType="user" skillsForUser={mockSkills} />);
+    render(<Skills skillType="user" skillsForUser={[reactSkill, javascriptSkill]} />);
 
     // Initially in experience layout
     const cloudButton = screen.getByText("Cloud");
@@ -88,7 +60,7 @@ describe("Skills", () => {
   });
 
   it("handles invalid button clicks", () => {
-    render(<Skills skillType="user" skillsForUser={mockSkills} />);
+    render(<Skills skillType="user" skillsForUser={[reactSkill, javascriptSkill]} />);
 
     // Create a fake click event with an invalid target
     const fakeEvent = {
