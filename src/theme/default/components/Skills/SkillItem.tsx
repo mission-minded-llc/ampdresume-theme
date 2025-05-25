@@ -56,7 +56,13 @@ export const SkillItem = ({ skill }: { skill: SkillForUser | SkillForProject }) 
         {skillData.skill.name}
       </Button>
 
-      <Dialog open={isOpen} onClose={() => setIsOpen(false)} fullWidth maxWidth="md">
+      <Dialog
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+        onTransitionExited={() => setIsOpen(false)}
+        fullWidth
+        maxWidth="md"
+      >
         <CustomDialogTitle closeHandler={() => setIsOpen(false)}>
           <Box sx={{ display: "flex", alignItems: "center", gap: "1em" }}>
             <SkillIcon />
