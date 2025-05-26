@@ -78,7 +78,7 @@ export default async function HomePage() {
           How can I contribute?
         </Typography>
         <P>
-          Visit the open-source repository on
+          Visit the open-source repository on{" "}
           <MuiLink href="https://github.com/missionmike/openresume-theme" target="_blank">
             GitHub
           </MuiLink>
