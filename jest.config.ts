@@ -23,6 +23,7 @@ const jestConfig: JestConfigWithTsJest = {
   collectCoverageFrom: [
     "src/**/*.ts",
     "src/**/*.tsx",
+    "!src/exports.ts",
     "!src/theme/index.ts",
     "!src/theme/sampleData.ts",
     "!src/theme/themeNavItems.tsx",
