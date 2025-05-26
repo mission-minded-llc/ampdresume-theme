@@ -20,13 +20,13 @@ export const ThemeAppearanceProvider = ({ children }: { children?: React.ReactNo
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
-    const handleMediaQueryChange = (e: MediaQueryListEvent) => {
+    const handleMediaQueryChange = (e: { matches: boolean }) => {
       setThemeAppearance(e.matches ? "dark" : "light");
     };
 
     // Detect the current appearance settings immediately.
     if (mediaQuery.matches) {
-      handleMediaQueryChange(new MediaQueryListEvent("change", { matches: mediaQuery.matches }));
+      handleMediaQueryChange({ matches: mediaQuery.matches });
     }
 
     mediaQuery.addEventListener("change", handleMediaQueryChange);
