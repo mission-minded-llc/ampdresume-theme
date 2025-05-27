@@ -21,6 +21,20 @@ export type ThemeAppearance = "dark" | "light";
 export type ThemeName = "default" | "davids-theme"; // Added new Davids theme
 
 /**
+ * The FeaturedProject interface is used to define a project that is featured on the user's resume.
+ * This interface is used to render the project in the UI, and is used to define the project's
+ * name, tech stack, description, metrics, links, and skills.
+ */
+export interface FeaturedProject {
+  name: string;
+  techStack: string;
+  description: string[];
+  metrics?: string;
+  links?: { label: string; url: string }[];
+  skillsForProject?: SkillForProject[];
+} 
+
+/**
  * The ResumeData object is the main data object that contains all the user's information,
  * including their personal details, social media links, skills, work experience, education,
  * and other details. This object is used to render the user's resume in the UI.

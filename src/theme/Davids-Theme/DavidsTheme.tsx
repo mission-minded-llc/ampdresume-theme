@@ -24,6 +24,7 @@ import {
     User,
     Certification,
     SkillForProject,
+    FeaturedProject,
   } from "@/types";
 
   import { Skills } from "@/theme/default/components/Skills/Skills";
@@ -31,16 +32,8 @@ import {
   import { Education } from "@/theme/default/components/Education";
   
   /* ----------  LOCAL TYPES ---------- */
-  // Custom shape used by the Projects section (different than the DB Project interface)
-  interface ProjectSection {
-    name: string;
-    techStack: string;
-    description: string[];
-    metrics?: string;
-    links?: { label: string; url: string }[];
-    skillsForProject?: SkillForProject[];
-  }
-  
+  // Remove the ProjectSection interface definition - it's now in types/index.ts as FeaturedProject
+
   export const ThemeDavidsTheme = ({
     user = {
       id: "1",
@@ -214,11 +207,11 @@ import {
     skillsForUser?: SkillForUser[];
     companies?: Company[];
     education?: EducationType[];
-    projects?: ProjectSection[];
+    projects?: FeaturedProject[];
     certifications?: Certification[];
   }) => {
     /* ----------  FALLBACK SAMPLE DATA ---------- */
-    const defaultProjects: ProjectSection[] = [
+    const defaultProjects: FeaturedProject[] = [
       {
         name: "QuickCurrency",
         techStack: "Flutter, Firebase, FreeCurrencyAPI",
