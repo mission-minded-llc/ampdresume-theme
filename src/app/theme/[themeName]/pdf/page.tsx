@@ -12,7 +12,7 @@ export async function generateMetadata({
   const { themeName } = await params;
 
   const title = `PDF Theme: ${themeName} ${titleSuffix}`;
-  const description = `This is the ${themeName} theme for OpenResume.`;
+  const description = `This is the ${themeName} theme for Amp'd Resume.`;
   const author = themeAuthor?.[themeName] || themeAuthor?.default;
   return {
     title,

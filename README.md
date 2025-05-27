@@ -1,16 +1,16 @@
-# OpenResume Theme
+# Amp'd Resume Theme
 
-[![codecov](https://codecov.io/gh/missionmike/openresume-theme/graph/badge.svg?token=HGZ6NME2HH)](https://codecov.io/gh/missionmike/openresume-theme)
+[![codecov](https://codecov.io/gh/missionmike/ampdresume-theme/graph/badge.svg?token=HGZ6NME2HH)](https://codecov.io/gh/missionmike/ampdresume-theme)
 
 Anyone can contribute their own frontend theme design and implementation for
-[OpenResume](https://www.openresume.org).
+[Amp'd Resume](https://www.ampdresume.com).
 
-Browse the published themes available here: https://theme.openresume.org/
+Browse the published themes available here: https://theme.ampdresume.com/
 
 ## The Project
 
-While the [OpenResume](https://www.openresume.org) backend and infrastructure is closed-source, the
-frontend templates for resume UIs and PDF exports are now open-source!
+While the [Amp'd Resume](https://www.ampdresume.com) backend and infrastructure is closed-source,
+the frontend templates for resume UIs and PDF exports are now open-source!
 
 ### What does this mean?
 
@@ -21,7 +21,7 @@ libraries needed.
 ### How can I contribute?
 
 To contribute, fork this repository, spin up on localhost to develop your theme, then open a pull
-request back to this main repository to see your theme available live on www.openresume.org once
+request back to this main repository to see your theme available live on www.ampdresume.com once
 it's merged.
 
 ## Developer Setup
@@ -41,8 +41,8 @@ To develop locally, first fork this repository and follow these steps:
 2. When your work is done on this branch, open a pull request into the original repository's
    `develop` branch.
 3. After the theme is merged into the `develop` branch, you should be able to view it live on
-   https://themetest.openresume.org as well as access the theme for testing on
-   https://test.openresume.org (only allow-listed members can sign in here, please request access).
+   https://themetest.ampdresume.com as well as access the theme for testing on
+   https://test.ampdresume.com (only allow-listed members can sign in here, please request access).
 4. From there, the theme will be merged to `main` branch, deployed to production and made available
    to all users!
 
@@ -54,7 +54,7 @@ There are some steps and specifications required to build a theme.
 
 First, get familiar with the data types ingested by a resume template. These can be found documented
 in
-[src/types/index.ts](https://github.com/missionmike/openresume-theme/blob/main/src/types/index.ts)
+[src/types/index.ts](https://github.com/missionmike/ampdresume-theme/blob/main/src/types/index.ts)
 
 ### Folder Structure
 
@@ -155,7 +155,7 @@ your own `sampleData.json` and `sampleData.ts` files within your `src/theme/[the
 Then, ensure they're imported in the `src/app/theme/[themeName]/ResumeView.tsx` and
 `src/app/theme/[themeName]/PDFView.tsx` files to be passed into your example page.
 
-If you want to base your sample data off a real resume from openresume.org, visit the
+If you want to base your sample data off a real resume from ampdresume.com, visit the
 [Postman collection](https://www.postman.com/universal-sunset-980198/missionmike/request/8ceygsv/getresume?ctx=documentation)
 and fire off the `getResume` request using the slug of your preferred user.
 

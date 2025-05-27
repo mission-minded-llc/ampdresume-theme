@@ -1,12 +1,12 @@
 /**
  * The types defined here are used to provide strong typing and structure for the data
- * used in various OpenResume themes.
+ * used in various Amp'd Resume themes.
  */
 
 /**
  * The appearance of the theme, which can be either "dark" or "light".
  * This value is used to determine the color scheme of the theme, and gets passed
- * in from the parent component. The parent OpenResume site has its own theme toggle,
+ * in from the parent component. The parent Amp'd Resume site has its own theme toggle,
  * which can be used to switch between the two appearances - this should NOT be
  * overridden by the theme.
  */
@@ -16,7 +16,7 @@ export type ThemeAppearance = "dark" | "light";
  * The name of the theme, which is used to determine the theme's appearance and
  * other settings. This value should be in slug format, with lowercase letters and
  * dashes instead of spaces. This value is used to determine which theme gets rendered
- * on the OpenResume site, and should be unique to each theme.
+ * on the Amp'd Resume site, and should be unique to each theme.
  */
 export type ThemeName = "default"; // Add more themes here, e.g. "default" | "my-theme" | "another-theme"
 
@@ -95,7 +95,7 @@ export interface Social {
 }
 
 /**
- * A Skill is a single global skill item defined by OpenResume's database. One or more of these
+ * A Skill is a single global skill item defined by Amp'd Resume's database. One or more of these
  * can be associated with a SkillForUser or SkillForProject, which are used to define a user's
  * skills and a project's skills, respectively.
  */

@@ -8,24 +8,23 @@ describe("HomePage", () => {
     render(page);
 
     // Check main heading
-    expect(screen.getByRole("heading", { name: /OpenResume Themes/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Amp'd Resume Themes/i })).toBeInTheDocument();
 
     // Check subheading
     expect(
-      screen.getByRole("heading", { name: /Customizable Open-Source Themes for OpenResume/i }),
+      screen.getByRole("heading", { name: /Customizable Open-Source Themes for Amp'd Resume/i }),
     ).toBeInTheDocument();
 
-    // Check OpenResume links
-    const openResumeLinks = screen.getAllByRole("link", { name: /OpenResume/i });
-    expect(openResumeLinks).toHaveLength(2);
-    openResumeLinks.forEach((link) => {
-      expect(link).toHaveAttribute("href", "https://www.openresume.org");
+    const ampdResumeLinks = screen.getAllByRole("link", { name: /Amp'd Resume/i });
+    expect(ampdResumeLinks).toHaveLength(2);
+    ampdResumeLinks.forEach((link) => {
+      expect(link).toHaveAttribute("href", "https://www.ampdresume.com");
       expect(link).toHaveAttribute("target", "_blank");
     });
 
     // Check GitHub repository link
     const githubLink = screen.getByRole("link", { name: /GitHub/i });
-    expect(githubLink).toHaveAttribute("href", "https://github.com/missionmike/openresume-theme");
+    expect(githubLink).toHaveAttribute("href", "https://github.com/missionmike/ampdresume-theme");
     expect(githubLink).toHaveAttribute("target", "_blank");
 
     // Check contribution section

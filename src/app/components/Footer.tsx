@@ -37,10 +37,10 @@ export const Footer = () => {
           textAlign: "center",
         }}
       >
-        <MuiLink href="/">openresume.org</MuiLink>
+        <MuiLink href="/">ampdresume.com</MuiLink>
         <Box>
           <Typography variant="caption" sx={{ textAlign: "center" }}>
-            &copy; {new Date().getFullYear()} OpenResume. All rights reserved.
+            &copy; {new Date().getFullYear()} Amp&apos;d Resume. All rights reserved.
           </Typography>
         </Box>
       </Box>
