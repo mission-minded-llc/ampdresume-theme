@@ -127,44 +127,6 @@
           "degree": "B.S. Computer Science",
           "dateAwarded": "1370044800000"
         }
-      ],
-      "projects": [
-        {
-          "name": "Cloud Cost Optimizer",
-          "techStack": "TypeScript, AWS Lambda, DynamoDB",
-          "description": [
-            "Developed a tool to analyze and reduce cloud spend, saving 30% on infrastructure costs.",
-            "Integrated with AWS APIs for real-time monitoring."
-          ],
-          "metrics": "Saved $500K annually in cloud costs.",
-          "links": [
-            { "label": "GitHub", "url": "https://github.com/testuser/cloud-cost-optimizer" }
-          ]
-        },
-        {
-          "name": "DevOps Dashboard",
-          "techStack": "React, Node.js, Kubernetes",
-          "description": [
-            "Built a dashboard for monitoring CI/CD pipelines and deployments.",
-            "Enabled real-time alerts and visualizations for engineering teams."
-          ],
-          "metrics": "Adopted by 10+ teams across the org.",
-          "links": []
-        }
-      ],
-      "certifications": [
-        {
-          "name": "AWS Certified Solutions Architect – Professional",
-          "issuer": "Amazon Web Services",
-          "date": "2022",
-          "credentialUrl": "https://aws.amazon.com/certification/certified-solutions-architect-professional/"
-        },
-        {
-          "name": "Certified Kubernetes Administrator (CKA)",
-          "issuer": "Cloud Native Computing Foundation",
-          "date": "2021",
-          "credentialUrl": "https://www.cncf.io/certification/cka/"
-        }
       ]
     }
   }
