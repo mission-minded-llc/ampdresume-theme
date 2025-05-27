@@ -24,7 +24,10 @@ describe("HomePage", () => {
 
     // Check GitHub repository link
     const githubLink = screen.getByRole("link", { name: /GitHub/i });
-    expect(githubLink).toHaveAttribute("href", "https://github.com/missionmike/ampdresume-theme");
+    expect(githubLink).toHaveAttribute(
+      "href",
+      "https://github.com/mission-minded-llc/ampdresume-theme",
+    );
     expect(githubLink).toHaveAttribute("target", "_blank");
 
     // Check contribution section

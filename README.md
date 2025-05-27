@@ -54,7 +54,7 @@ There are some steps and specifications required to build a theme.
 
 First, get familiar with the data types ingested by a resume template. These can be found documented
 in
-[src/types/index.ts](https://github.com/missionmike/ampdresume-theme/blob/main/src/types/index.ts)
+[src/types/index.ts](https://github.com/mission-minded-llc/ampdresume-theme/blob/main/src/types/index.ts)
 
 ### Folder Structure
 

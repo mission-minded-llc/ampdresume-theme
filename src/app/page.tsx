@@ -79,7 +79,7 @@ export default async function HomePage() {
         </Typography>
         <P>
           Visit the open-source repository on{" "}
-          <MuiLink href="https://github.com/missionmike/ampdresume-theme" target="_blank">
+          <MuiLink href="https://github.com/mission-minded-llc/ampdresume-theme" target="_blank">
             GitHub
           </MuiLink>
           .
