@@ -11,7 +11,7 @@ import {
   import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
   import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
   import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-  import { useState, useMemo } from "react";
+  import { useState, useMemo, useEffect } from "react";
   import { Icon } from "@iconify/react";
   import { MuiLink } from "@/components/MuiLink";
   import { generateSocialUrl, getSocialIcon } from "@/util/social";
@@ -34,6 +34,7 @@ import {
   
   import { SkillsSection } from "./components/Skills";
   import { WorkExperienceSection } from "./components/WorkExperience";
+  import { QRGenerator } from "./components/QRGenerator";
   // Commented out until backend support is ready for featured projects
   // import { ProjectsSection } from "./components/Projects";
   // import { CertificationsSection } from "./components/Certifications";
@@ -61,6 +62,13 @@ import {
     certifications?: Certification[];
   }) => {
     const [active, setActive] = useState<number>(0);
+    const [currentUrl, setCurrentUrl] = useState<string>('');
+
+    useEffect(() => {
+      if (typeof window !== 'undefined') {
+        setCurrentUrl(window.location.href);
+      }
+    }, []);
 
     const sections: { label: string; render: JSX.Element | null }[] = [
       {
@@ -89,36 +97,6 @@ import {
     const cycle = (delta: number) => {
       setActive((prev) => (prev + delta + sections.length) % sections.length);
     };
-
-    /* ----------  HELPER RENDER FUNCTIONS ---------- */
-    function renderCertifications() {
-      return (
-        <Box>
-          {certifications?.map((cert) => (
-            <Box key={cert.name} sx={{ mb: 3 }}>
-              <Box component="h3" sx={{ fontWeight: "bold", mb: 0.5 }}>
-                {cert.name}
-              </Box>
-              <Box sx={{ mb: 0.5 }}>
-                {cert.issuer}
-                {cert.date && ` – ${cert.date}`}
-              </Box>
-              {cert.credentialUrl && (
-                <Box>
-                  <a
-                    href={cert.credentialUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    View Credential
-                  </a>
-                </Box>
-              )}
-            </Box>
-          ))}
-        </Box>
-      );
-    }
   
     /* ----------  NAVY THEME WITH DARK MODE SUPPORT ---------- */
     const navyTheme = createTheme({
@@ -252,6 +230,9 @@ import {
           <Fade in key={active} timeout={500} unmountOnExit mountOnEnter>
             <Box sx={{ mt: 4 }}>{sections[active].render}</Box>
           </Fade>
+
+          {/* QR Code Generator */}
+          <QRGenerator url={currentUrl} user={user} />
         </Box>
       </ThemeProvider>
     );
