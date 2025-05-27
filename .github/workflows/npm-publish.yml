@@ -18,7 +18,7 @@ jobs:
           # Fetch all history and tags
           fetch-depth: 0
           persist-credentials: true
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.ACTIONS_PAT }}
 
       - uses: ./.github/actions/setup-dependencies
 
@@ -46,7 +46,7 @@ jobs:
           # Push tag back to the repository
           git push --follow-tags
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_PAT }}
 
       - name: Setup .npmrc file
         run: |
