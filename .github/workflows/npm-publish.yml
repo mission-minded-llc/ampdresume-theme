@@ -8,17 +8,13 @@ on:
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write # This allows pushing tags and commits
-      packages: write # This allows publishing packages
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
           # Fetch all history and tags
           fetch-depth: 0
-          persist-credentials: true
-          token: ${{ secrets.ACTIONS_PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: ./.github/actions/setup-dependencies
 
@@ -31,8 +27,8 @@ jobs:
       - name: Version bump and push tag
         run: |
           # Configure git user
-          git config user.name "missionmike"
-          git config user.email "md@missionmike.dev"
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
 
           # Determine version bump type (you can adjust this logic)
           if git log -1 --pretty=%B | grep -q "\[major\]"; then
@@ -44,8 +40,9 @@ jobs:
           fi
 
           # Push tag back to the repository
-          git remote set-url origin https://x-access-token:${{ secrets.ACTIONS_PAT }}@github.com/mission-minded-llc/ampdresume-theme.git
-          git push origin main --follow-tags
+          git push --follow-tags
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup .npmrc file
         run: |
