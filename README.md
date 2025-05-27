@@ -1,5 +1,7 @@
 # OpenResume Theme
 
+[![codecov](https://codecov.io/gh/missionmike/openresume-theme/graph/badge.svg?token=HGZ6NME2HH)](https://codecov.io/gh/missionmike/openresume-theme)
+
 Anyone can contribute their own frontend theme design and implementation for
 [OpenResume](https://www.openresume.org).
 

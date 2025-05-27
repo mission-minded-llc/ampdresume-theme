@@ -6,7 +6,6 @@ import { Box } from "@mui/material";
 import { Education } from "./components/pdf/Education";
 import { Header } from "./components/pdf/Header";
 import { MUIThemeProvider } from "./MUIThemeProvider";
-import React from "react";
 import { Skills } from "./components/pdf/Skills";
 import { WorkExperience } from "./components/pdf/WorkExperience";
 

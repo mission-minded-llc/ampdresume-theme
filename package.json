@@ -1,6 +1,6 @@
 {
   "name": "@openresume/theme",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "A theme package for OpenResume",
   "main": "dist/exports.js",
   "module": "dist/exports.mjs",

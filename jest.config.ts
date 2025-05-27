@@ -20,13 +20,21 @@ const jestConfig: JestConfigWithTsJest = {
   transformIgnorePatterns: ["node_modules"],
 
   // Coverage settings.
-  collectCoverageFrom: ["src/**/*.ts", "src/**/*.tsx", "!src/graphql/**", "!**/node_modules/**"],
+  collectCoverageFrom: [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "!src/exports.ts",
+    "!src/theme/index.ts",
+    "!src/theme/sampleData.ts",
+    "!src/theme/themeNavItems.tsx",
+    "!**/node_modules/**",
+  ],
   coverageThreshold: {
     global: {
-      branches: 1,
-      functions: 1,
-      lines: 1,
-      statements: 1,
+      branches: 50,
+      functions: 40,
+      lines: 50,
+      statements: 50,
     },
   },
 };
