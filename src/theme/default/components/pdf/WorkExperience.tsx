@@ -13,8 +13,8 @@ export const WorkExperience = ({ companies, showSkills }: SectionWorkExperienceP
   return (
     <Section>
       <SectionTitle>Work Experience</SectionTitle>
-      {companies.map((company) => (
-        <Box key={company.id} sx={{ mb: 2 }}>
+      {companies.map((company, companyIndex) => (
+        <Box key={company.id} sx={{ mb: 2 }} data-testid={`company-${companyIndex}`}>
           <SectionSubtitle>
             {company.name}
             <span style={{ fontWeight: "normal" }}>
@@ -22,9 +22,13 @@ export const WorkExperience = ({ companies, showSkills }: SectionWorkExperienceP
             </span>
           </SectionSubtitle>
           <Divider />
-          {company?.positions?.map((position) => {
+          {company?.positions?.map((position, positionIndex) => {
             return (
-              <Box key={position.id} sx={{ mb: 2 }}>
+              <Box
+                key={position.id}
+                sx={{ mb: 2 }}
+                data-testid={`company-${companyIndex}-position-${positionIndex}`}
+              >
                 <SectionSubtitle>
                   {position.title}
                   <Typography component="span" variant="body2" sx={{ fontSize: fontSize.subtitle }}>
@@ -33,14 +37,15 @@ export const WorkExperience = ({ companies, showSkills }: SectionWorkExperienceP
                     {position?.endDate ? formatLongDate(position.endDate) : "present"}
                   </Typography>
                 </SectionSubtitle>
-                {position?.projects?.map((project, index) => {
+                {position?.projects?.map((project, projectIndex) => {
                   return (
                     <Typography
                       key={project.id}
+                      data-testid={`company-${companyIndex}-position-${positionIndex}-project-${projectIndex}`}
                       sx={{
                         pl: 2,
                         fontSize: fontSize.body,
-                        mt: index === 0 ? 0.5 : 0.1,
+                        mt: projectIndex === 0 ? 0.5 : 0.1,
                         "&:before": {
                           content: '"\\2022"',
                           paddingRight: "0.5em",
@@ -53,7 +58,7 @@ export const WorkExperience = ({ companies, showSkills }: SectionWorkExperienceP
                       {project.name}{" "}
                       {showSkills && project.skillsForProject.length > 0 ? (
                         <>
-                          {project.skillsForProject.map((skill, index) => (
+                          {project.skillsForProject.map((skill, skillIndex) => (
                             <Typography
                               key={skill.skillForUser.skill.name}
                               component="span"
@@ -63,7 +68,7 @@ export const WorkExperience = ({ companies, showSkills }: SectionWorkExperienceP
                               }}
                             >
                               {skill.skillForUser.skill.name}
-                              {index < project.skillsForProject.length - 1 ? ", " : ""}
+                              {skillIndex < project.skillsForProject.length - 1 ? ", " : ""}
                             </Typography>
                           ))}
                         </>

@@ -1,7 +1,7 @@
 {
-  "name": "@openresume/theme",
+  "name": "@ampdresume/theme",
   "version": "0.1.11",
-  "description": "A theme package for OpenResume",
+  "description": "A theme package for Amp'd Resume",
   "main": "dist/exports.js",
   "module": "dist/exports.mjs",
   "types": "dist/exports.d.ts",
@@ -29,19 +29,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/missionmike/openresume-theme.git"
+    "url": "git+https://github.com/mission-minded-llc/ampdresume-theme.git"
   },
   "keywords": [
     "resume",
     "theme",
-    "openresume"
+    "ampdresume"
   ],
   "author": "Michael R. Dinerstein",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/missionmike/openresume-theme/issues"
+    "url": "https://github.com/mission-minded-llc/ampdresume-theme/issues"
   },
-  "homepage": "https://github.com/missionmike/openresume-theme#readme",
+  "homepage": "https://github.com/mission-minded-llc/ampdresume-theme#readme",
   "dependencies": {
     "@iconify/react": "^5.0.2",
     "@mui/base": "^5.0.0-beta.68",

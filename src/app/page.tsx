@@ -5,9 +5,9 @@ import { MuiLink } from "@/components/MuiLink";
 import { P } from "@/app/components/Typography";
 import React from "react";
 
-const title = "OpenResume Themes | Build Your Free Interactive Resume Theme";
+const title = "Amp'd Resume Themes | Build Your Free Interactive Resume Theme";
 const description =
-  "OpenResume is a free interactive resume builder. Themes are customizable and open-source for all users to use.";
+  "Amp'd Resume is a free interactive resume builder. Themes are customizable and open-source for all users to use.";
 
 export const metadata: Metadata = {
   title: description,
@@ -49,7 +49,7 @@ export default async function HomePage() {
             typography: { sm: "h2", xs: "h4" },
           }}
         >
-          OpenResume Themes
+          Amp&apos;d Resume Themes
         </Typography>
         <Typography
           component="h2"
@@ -59,27 +59,27 @@ export default async function HomePage() {
           }}
         >
           Customizable Open-Source Themes for{" "}
-          <MuiLink href="https://www.openresume.org" target="_blank">
-            OpenResume
+          <MuiLink href="https://www.ampdresume.com" target="_blank">
+            Amp&apos;d Resume
           </MuiLink>
         </Typography>
         <P>
           This is a collection of themes for{" "}
-          <MuiLink href="https://www.openresume.org" target="_blank">
-            OpenResume
+          <MuiLink href="https://www.ampdresume.com" target="_blank">
+            Amp&apos;d Resume
           </MuiLink>{" "}
           that can be used to customize your resume and portfolio.
         </P>
         <P>
           Themes that are created by the community are listed here, and made available to all users
-          in the OpenResume platform.
+          in the Amp&apos;d Resume platform.
         </P>
         <Typography component="h3" variant="h4" sx={{ marginTop: 4, marginBottom: 2 }}>
           How can I contribute?
         </Typography>
         <P>
-          Visit the open-source repository on
-          <MuiLink href="https://github.com/missionmike/openresume-theme" target="_blank">
+          Visit the open-source repository on{" "}
+          <MuiLink href="https://github.com/mission-minded-llc/ampdresume-theme" target="_blank">
             GitHub
           </MuiLink>
           .
