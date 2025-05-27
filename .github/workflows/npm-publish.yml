@@ -31,7 +31,7 @@ jobs:
       - name: Version bump and push tag
         run: |
           # Configure git user
-          git config user.name "Mission Mike"
+          git config user.name "missionmike"
           git config user.email "md@missionmike.dev"
 
           # Determine version bump type (you can adjust this logic)
