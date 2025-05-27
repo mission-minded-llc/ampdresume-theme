@@ -8,12 +8,16 @@ on:
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # This allows pushing tags and commits
+      packages: write # This allows publishing packages
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
           # Fetch all history and tags
           fetch-depth: 0
+          persist-credentials: true
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: ./.github/actions/setup-dependencies
