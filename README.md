@@ -184,3 +184,5 @@ Checks can be run via:
 - `npm run check` to test all avenues in sequence. This is the command used within the CI process.
 
 If you have any issues during development, please open a new issue in this repository.
+
+Happy coding!
