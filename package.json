@@ -1,6 +1,6 @@
 {
   "name": "@ampdresume/theme",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "A theme package for Amp'd Resume",
   "main": "dist/exports.js",
   "module": "dist/exports.mjs",
