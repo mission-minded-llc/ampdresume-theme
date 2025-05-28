@@ -1,6 +1,6 @@
 # Amp'd Resume Theme
 
-[![codecov](https://codecov.io/gh/missionmike/ampdresume-theme/graph/badge.svg?token=HGZ6NME2HH)](https://codecov.io/gh/missionmike/ampdresume-theme)
+[![codecov](https://codecov.io/gh/mission-minded-llc/ampdresume-theme/graph/badge.svg?token=HGZ6NME2HH)](https://codecov.io/gh/mission-minded-llc/ampdresume-theme)
 
 Anyone can contribute their own frontend theme design and implementation for
 [Amp'd Resume](https://www.ampdresume.com).
