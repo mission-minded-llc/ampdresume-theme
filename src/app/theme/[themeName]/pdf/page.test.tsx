@@ -28,7 +28,7 @@ describe("PDF Theme Page", () => {
 
       expect(metadata).toEqual({
         title: `PDF Theme: default ${titleSuffix}`,
-        description: "This is the default theme for OpenResume.",
+        description: "This is the default theme for Amp'd Resume.",
         authors: [
           {
             name: themeAuthor?.default,
@@ -36,7 +36,7 @@ describe("PDF Theme Page", () => {
         ],
         openGraph: {
           title: `PDF Theme: default ${titleSuffix}`,
-          description: "This is the default theme for OpenResume.",
+          description: "This is the default theme for Amp'd Resume.",
           images: [],
         },
       });
@@ -48,7 +48,7 @@ describe("PDF Theme Page", () => {
 
       expect(metadata).toEqual({
         title: `PDF Theme: modern ${titleSuffix}`,
-        description: "This is the modern theme for OpenResume.",
+        description: "This is the modern theme for Amp'd Resume.",
         authors: [
           {
             name: themeAuthor?.modern || themeAuthor?.default,
@@ -56,7 +56,7 @@ describe("PDF Theme Page", () => {
         ],
         openGraph: {
           title: `PDF Theme: modern ${titleSuffix}`,
-          description: "This is the modern theme for OpenResume.",
+          description: "This is the modern theme for Amp'd Resume.",
           images: [],
         },
       });

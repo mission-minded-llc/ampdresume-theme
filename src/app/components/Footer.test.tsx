@@ -21,8 +21,8 @@ describe("Footer", () => {
     render(<Footer />);
 
     // Check if main links and content are present
-    expect(screen.getByText("openresume.org")).toBeInTheDocument();
-    expect(screen.getByText(/OpenResume\. All rights reserved\./)).toBeInTheDocument();
+    expect(screen.getByText("ampdresume.com")).toBeInTheDocument();
+    expect(screen.getByText(/Amp'd Resume\. All rights reserved\./)).toBeInTheDocument();
 
     // Check if current year is included in the copyright text
     const currentYear = new Date().getFullYear().toString();

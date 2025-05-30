@@ -20,13 +20,13 @@ describe("Theme Page", () => {
       const metadata = await generateMetadata({ params });
 
       expect(metadata.title).toBe(`Theme: ${themeName} ${titleSuffix}`);
-      expect(metadata.description).toBe(`This is the ${themeName} theme for OpenResume.`);
+      expect(metadata.description).toBe(`This is the ${themeName} theme for Amp'd Resume.`);
       expect(Array.isArray(metadata.authors) && metadata.authors[0]?.name).toBe(
         themeAuthor?.default,
       );
       expect(metadata.openGraph).toEqual({
         title: `Theme: ${themeName} ${titleSuffix}`,
-        description: `This is the ${themeName} theme for OpenResume.`,
+        description: `This is the ${themeName} theme for Amp'd Resume.`,
         images: [],
       });
     });
