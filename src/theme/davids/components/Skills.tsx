@@ -1,5 +1,14 @@
-import { useState, useMemo } from "react";
-import { Box, TextField, InputAdornment, IconButton, Menu, MenuItem, useTheme } from "@mui/material";
+import {
+  Box,
+  IconButton,
+  InputAdornment,
+  Menu,
+  MenuItem,
+  TextField,
+  useTheme,
+} from "@mui/material";
+import { useMemo, useState } from "react";
+
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { Skills as DefaultSkills } from "@/theme/default/components/Skills/Skills";
 import { SkillForUser } from "@/types";
@@ -48,7 +57,7 @@ export const SkillsSection = ({ skillsForUser }: SkillsSectionProps) => {
           variant="outlined"
           placeholder={filterType === "skill" ? "Enter Skill" : "Enter Years of Experience"}
           value={skillFilter}
-          onChange={e => setSkillFilter(e.target.value)}
+          onChange={(e) => setSkillFilter(e.target.value)}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
@@ -58,23 +67,19 @@ export const SkillsSection = ({ skillsForUser }: SkillsSectionProps) => {
               </InputAdornment>
             ),
           }}
-          sx={{ 
+          sx={{
             background: theme.palette.background.paper,
-            '& .MuiOutlinedInput-root': {
-              '& fieldset': {
-                borderColor: theme.palette.mode === 'dark' ? '#475569' : '#d1d5db',
+            "& .MuiOutlinedInput-root": {
+              "& fieldset": {
+                borderColor: theme.palette.mode === "dark" ? "#475569" : "#d1d5db",
               },
-              '&:hover fieldset': {
+              "&:hover fieldset": {
                 borderColor: theme.palette.primary.main,
               },
             },
           }}
         />
-        <Menu
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={() => handleDropdownClose()}
-        >
+        <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={() => handleDropdownClose()}>
           <MenuItem onClick={() => handleDropdownClose("skill")}>Skill</MenuItem>
           <MenuItem onClick={() => handleDropdownClose("years")}>Years of Experience</MenuItem>
         </Menu>
@@ -82,4 +87,4 @@ export const SkillsSection = ({ skillsForUser }: SkillsSectionProps) => {
       <DefaultSkills skillType="user" skillsForUser={filteredSkillsForUser} />
     </Box>
   );
-}; 
+};

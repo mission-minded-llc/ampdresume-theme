@@ -6,5 +6,5 @@ export const titleSuffix = "| Amp'd Resume";
 // Theme names should be lowercase, with dashes instead of spaces.
 export const themeAuthor: { [key: string]: string } = {
   default: "Michael R. Dinerstein",
-  "davids-theme": "David Schurer",
+  davids: "David Schurer",
 };
