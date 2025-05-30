@@ -43,7 +43,7 @@ const renderWithTheme = (component: React.ReactNode) => {
   return render(<ThemeProvider theme={theme}>{component}</ThemeProvider>);
 };
 
-describe("ProjectsSection", () => {
+describe("FeaturedProjects", () => {
   it("renders project name and tech stack", () => {
     renderWithTheme(<FeaturedProjects projects={sampleProjects} />);
 
