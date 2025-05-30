@@ -18,7 +18,7 @@ export type ThemeAppearance = "dark" | "light";
  * dashes instead of spaces. This value is used to determine which theme gets rendered
  * on the Amp'd Resume site, and should be unique to each theme.
  */
-export type ThemeName = "default" | "davids-theme"; // Added new Davids theme
+export type ThemeName = "default" | "davids"; // Add more themes here, e.g. "default" | "my-theme" | "another-theme"
 
 /**
  * The FeaturedProject interface is used to define a project that is featured on the user's resume.
@@ -32,7 +32,7 @@ export interface FeaturedProject {
   metrics?: string;
   links?: { label: string; url: string }[];
   skillsForProject?: SkillForProject[];
-} 
+}
 
 /**
  * The ResumeData object is the main data object that contains all the user's information,

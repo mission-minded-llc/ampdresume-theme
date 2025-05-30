@@ -1,4 +1,5 @@
 import { Box, useTheme } from "@mui/material";
+
 import { Certification } from "@/types";
 
 interface CertificationsSectionProps {
@@ -7,7 +8,7 @@ interface CertificationsSectionProps {
 
 export const CertificationsSection = ({ certifications }: CertificationsSectionProps) => {
   const theme = useTheme();
-  
+
   return (
     <Box>
       {certifications.map((cert) => (
@@ -25,9 +26,9 @@ export const CertificationsSection = ({ certifications }: CertificationsSectionP
                 href={cert.credentialUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ 
+                style={{
                   color: theme.palette.primary.main,
-                  textDecoration: 'underline'
+                  textDecoration: "underline",
                 }}
               >
                 View Credential
@@ -38,4 +39,4 @@ export const CertificationsSection = ({ certifications }: CertificationsSectionP
       ))}
     </Box>
   );
-}; 
+};

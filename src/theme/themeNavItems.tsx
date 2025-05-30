@@ -15,6 +15,6 @@ export const themeNavItems: NavItem[] = [
   {
     text: "David's Theme",
     icon: <FeedIcon />,
-    href: "/theme/davids-theme",
+    href: "/theme/davids",
   },
 ];

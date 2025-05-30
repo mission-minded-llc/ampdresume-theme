@@ -2,7 +2,6 @@ import { render, screen } from "@testing-library/react";
 
 import { ResumeView } from "./ResumeView";
 import { ThemeAppearanceContext } from "@/app/components/ThemeContext";
-import { ThemeName } from "@/types";
 import { themeDefaultSampleData } from "@/theme/sampleData";
 
 // Mock the ThemeDefault component
@@ -63,7 +62,8 @@ describe("ResumeView", () => {
   });
 
   it("should render ThemeDefault component for unknown theme name", () => {
-    renderComponent({ themeName: "unknown" as ThemeName });
+    const themeName = "unknown" as "default"; // Cast to "default" to avoid TypeScript error.
+    renderComponent({ themeName });
 
     expect(screen.getByTestId("theme-default")).toBeInTheDocument();
   });
