@@ -12,4 +12,9 @@ export const themeNavItems: NavItem[] = [
     icon: <FeedIcon />,
     href: "/theme/default",
   },
+  {
+    text: "David's Theme",
+    icon: <FeedIcon />,
+    href: "/theme/davids-theme",
+  },
 ];
