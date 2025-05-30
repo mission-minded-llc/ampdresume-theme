@@ -10,7 +10,7 @@ export const CertificationsSection = ({ certifications }: CertificationsSectionP
   const theme = useTheme();
 
   return (
-    <Box>
+    <Box data-testid="certifications-section">
       {certifications.map((cert) => (
         <Box key={cert.name} sx={{ mb: 3 }}>
           <Box component="h3" sx={{ fontWeight: "bold", mb: 0.5 }}>
