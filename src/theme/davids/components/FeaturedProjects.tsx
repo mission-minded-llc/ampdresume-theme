@@ -2,15 +2,15 @@ import { Box, useTheme } from "@mui/material";
 
 import { FeaturedProject } from "@/types";
 
-interface ProjectsSectionProps {
+interface FeaturedProjectsProps {
   projects: FeaturedProject[];
 }
 
-export const ProjectsSection = ({ projects }: ProjectsSectionProps) => {
+export const FeaturedProjects = ({ projects }: FeaturedProjectsProps) => {
   const theme = useTheme();
 
   return (
-    <Box>
+    <Box data-testid="featured-projects">
       {projects.map((proj) => {
         const skillsForProject = Array.isArray(proj.skillsForProject) ? proj.skillsForProject : [];
         const safeProj = { ...proj, skillsForProject };
