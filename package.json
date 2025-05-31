@@ -25,7 +25,8 @@
     "prettier": "prettier --check .",
     "types:check": "tsc --noEmit",
     "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "cypress:test": "cypress run"
   },
   "repository": {
     "type": "git",
@@ -51,6 +52,7 @@
     "@mui/x-date-pickers": "^7.24.1",
     "@next/third-parties": "^15.0.3",
     "@types/qrcode": "^1.5.5",
+    "cypress": "^14.2.0",
     "dayjs": "^1.11.13",
     "html-react-parser": "^5.2.1",
     "html2pdf.js": "^0.10.2",
