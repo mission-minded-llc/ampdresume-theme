@@ -29,10 +29,11 @@ jobs:
       - name: Run Cypress tests
         run: npm run cypress:test
 
-      # - name: Upload Cypress Screenshots
-      #   if: failure()
-      #   run: npm run cypress:upload:screenshots
-      #   env:
-      #     AWS_S3_USER_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #     AWS_S3_USER_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      #     AWS_S3_BUCKET_NAME: ci.theme.ampdresume.com # Required by the s3Client in the script, but not used.
+      - name: Upload Cypress Screenshots
+        if: failure()
+        run: npm run cypress:upload:screenshots
+        env:
+          AWS_S3_USER_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_S3_USER_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_S3_BUCKET_NAME: ${{ vars.AWS_S3_BUCKET_NAME }}
+          AWS_REGION: ${{ vars.AWS_REGION }}

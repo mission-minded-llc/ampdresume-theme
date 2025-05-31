@@ -26,7 +26,8 @@
     "types:check": "tsc --noEmit",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "cypress:test": "cypress run"
+    "cypress:test": "cypress run",
+    "cypress:upload:screenshots": "tsx scripts/uploadCypressScreenshots.ts"
   },
   "repository": {
     "type": "git",
@@ -44,6 +45,7 @@
   },
   "homepage": "https://github.com/mission-minded-llc/ampdresume-theme#readme",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.821.0",
     "@iconify/react": "^5.0.2",
     "@mui/base": "^5.0.0-beta.68",
     "@mui/icons-material": "^6.2.0",
