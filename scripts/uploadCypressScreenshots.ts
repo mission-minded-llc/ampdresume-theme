@@ -43,7 +43,7 @@ function getAllFiles(dirPath: string, arrayOfFiles: string[] = []): string[] {
   return arrayOfFiles;
 }
 
-function uploadScreenshots() {
+async function uploadScreenshots() {
   const s3 = getS3Client();
 
   const bucket = process.env.AWS_S3_BUCKET_NAME;
@@ -65,26 +65,28 @@ function uploadScreenshots() {
   console.log("S3 bucket:", bucket);
   console.log("S3 directory:", s3dir);
 
-  files.forEach(async (file) => {
+  const uploadPromises = files.map(async (file) => {
     const filePath = join(screenshotsDir, file);
     const data = readFileSync(filePath);
 
     console.log("Uploading file:", file);
-    await s3
-      .send(
+    try {
+      await s3.send(
         new PutObjectCommand({
           Bucket: bucket,
           Key: `${s3dir}/${file}`,
           Body: data,
           ContentType: "image/png",
         }),
-      )
-      .catch((error: Error) => {
-        console.error("Error uploading file:", file, error);
-      });
-
-    console.log("Done.");
+      );
+      console.log("Done uploading:", file);
+    } catch (error) {
+      console.error("Error uploading file:", file, error);
+    }
   });
+
+  await Promise.all(uploadPromises);
+  console.log("All uploads completed.");
 }
 
 uploadScreenshots();
