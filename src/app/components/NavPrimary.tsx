@@ -60,6 +60,7 @@ export const NavPrimary = () => {
         edge="start"
         color="inherit"
         aria-label="menu"
+        data-testid="nav-primary-menu-button"
         onClick={toggleDrawer(true)}
         sx={(theme) => ({
           mt: 1,
@@ -75,7 +76,14 @@ export const NavPrimary = () => {
         <MenuIcon fontSize="large" />
       </IconButton>
 
-      <Drawer anchor="left" open={isOpen} onClose={toggleDrawer(false)}>
+      <Drawer
+        anchor="left"
+        open={isOpen}
+        onClose={toggleDrawer(false)}
+        data-testid="nav-primary-menu"
+        data-is-open={isOpen}
+        component="nav"
+      >
         <Box
           sx={{
             width: 250,
@@ -94,7 +102,13 @@ export const NavPrimary = () => {
             }}
           >
             <Typography variant="h6">Menu</Typography>
-            <IconButton edge="end" color="inherit" aria-label="close" onClick={toggleDrawer(false)}>
+            <IconButton
+              edge="end"
+              color="inherit"
+              aria-label="close"
+              onClick={toggleDrawer(false)}
+              data-testid="nav-primary-menu-close-button"
+            >
               <CloseIcon />
             </IconButton>
           </Box>
