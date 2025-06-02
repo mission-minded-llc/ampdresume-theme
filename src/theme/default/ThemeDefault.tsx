@@ -1,7 +1,7 @@
 import { Company, Education as EducationType, SkillForUser, Social, User } from "@/types";
 
 import { Box } from "@mui/material";
-import { Education } from "@/theme/components/Education";
+import { Education } from "@/theme/components/Education/Education";
 import { MUIThemeProvider } from "./MUIThemeProvider";
 import { ResumeHeading } from "./components/ResumeHeading";
 import { Skills } from "@/theme/components/Skills/Skills";

@@ -19,7 +19,7 @@ import {
 import { generateSocialUrl, getSocialIcon } from "@/util/social";
 import { useEffect, useState } from "react";
 
-import { Education } from "@/theme/components/Education";
+import { Education } from "@/theme/components/Education/Education";
 import { Icon } from "@iconify/react";
 import { MuiLink } from "@/components/MuiLink";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
