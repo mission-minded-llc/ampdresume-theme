@@ -10,8 +10,8 @@ import {
 import { useMemo, useState } from "react";
 
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import { Skills as DefaultSkills } from "@/theme/default/components/Skills/Skills";
 import { SkillForUser } from "@/types";
+import { Skills } from "@/theme/components/Skills/Skills";
 
 interface SkillsSectionProps {
   skillsForUser: SkillForUser[];
@@ -84,7 +84,7 @@ export const SkillsSection = ({ skillsForUser }: SkillsSectionProps) => {
           <MenuItem onClick={() => handleDropdownClose("years")}>Years of Experience</MenuItem>
         </Menu>
       </Box>
-      <DefaultSkills skillType="user" skillsForUser={filteredSkillsForUser} />
+      <Skills skillType="user" skillsForUser={filteredSkillsForUser} />
     </Box>
   );
 };

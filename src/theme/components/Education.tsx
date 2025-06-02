@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 
 import type { Education as EducationType } from "@/types";
 import React from "react";
-import { ResumeTitle } from "./ResumeTitle";
+import { ResumeTitle } from "@/theme/components/ResumeTitle";
 import { formatLongDate } from "@/lib/format";
 
 export const Education = ({ education }: { education: EducationType[] }) => {

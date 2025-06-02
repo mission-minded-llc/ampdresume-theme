@@ -4,7 +4,7 @@ import { Box, Typography } from "@mui/material";
 
 import { Company } from "@/types";
 import { PositionsList } from "./PositionsList";
-import { ResumeTitle } from "../ResumeTitle";
+import { ResumeTitle } from "@/theme/components/ResumeTitle";
 import { formatLongDate } from "@/lib/format";
 
 export const WorkExperience = ({ companies }: { companies: Company[] }) => (

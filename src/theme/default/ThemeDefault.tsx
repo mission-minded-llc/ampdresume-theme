@@ -1,10 +1,10 @@
 import { Company, Education as EducationType, SkillForUser, Social, User } from "@/types";
 
 import { Box } from "@mui/material";
-import { Education } from "./components/Education";
+import { Education } from "@/theme/components/Education";
 import { MUIThemeProvider } from "./MUIThemeProvider";
 import { ResumeHeading } from "./components/ResumeHeading";
-import { Skills } from "./components/Skills/Skills";
+import { Skills } from "@/theme/components/Skills/Skills";
 import { ThemeAppearance } from "@/types";
 import { WorkExperience } from "./components/WorkExperience/WorkExperience";
 

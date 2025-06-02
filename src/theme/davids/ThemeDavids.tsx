@@ -19,13 +19,13 @@ import {
 import { generateSocialUrl, getSocialIcon } from "@/util/social";
 import { useEffect, useState } from "react";
 
-import { Education } from "@/theme/default/components/Education";
+import { Education } from "@/theme/components/Education";
 import { Icon } from "@iconify/react";
 import { MuiLink } from "@/components/MuiLink";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { QRGenerator } from "./components/QRGenerator";
-import { SkillsSection } from "./components/Skills";
+import { SkillsSection } from "./components/SkillsSection";
 import { WorkExperienceSection } from "./components/WorkExperience";
 import { usePathname } from "next/navigation";
 
@@ -247,5 +247,3 @@ export const ThemeDavids = ({
     </ThemeProvider>
   );
 };
-
-// keep named export only; barrel file re-exports this component
