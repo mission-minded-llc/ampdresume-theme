@@ -7,3 +7,6 @@ export { groupSkillsForUserByYearExperience } from "@/util/structure";
 
 export { ThemeDefault } from "@/theme/default/ThemeDefault";
 export { ThemeDefaultPDF } from "@/theme/default/ThemeDefaultPDF";
+export { ThemeDavids } from "@/theme/davids/ThemeDavids";
+
+export { themeDefinitions } from "@/constants";
