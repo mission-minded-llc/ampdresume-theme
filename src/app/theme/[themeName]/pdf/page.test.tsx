@@ -28,14 +28,14 @@ describe("PDF Theme Page", () => {
 
       expect(metadata).toEqual({
         title: `PDF Theme: default ${titleSuffix}`,
-        description: "This is the default theme for Amp'd Resume.",
+        description: themeDefinitions.default.description,
         authors: themeDefinitions.default.authors.map((author) => ({
           name: author.name,
           url: author.gitHubUrl || author.linkedInUrl || "",
         })),
         openGraph: {
           title: `PDF Theme: default ${titleSuffix}`,
-          description: "This is the default theme for Amp'd Resume.",
+          description: themeDefinitions.default.description,
           images: [],
         },
       });
@@ -47,7 +47,7 @@ describe("PDF Theme Page", () => {
 
       expect(metadata).toEqual({
         title: `PDF Theme: davids ${titleSuffix}`,
-        description: "This is the davids theme for Amp'd Resume.",
+        description: themeDefinitions.davids.description,
         authors: [
           {
             name: themeDefinitions.davids.authors[0].name,
@@ -56,7 +56,7 @@ describe("PDF Theme Page", () => {
         ],
         openGraph: {
           title: `PDF Theme: davids ${titleSuffix}`,
-          description: "This is the davids theme for Amp'd Resume.",
+          description: themeDefinitions.davids.description,
           images: [],
         },
       });
