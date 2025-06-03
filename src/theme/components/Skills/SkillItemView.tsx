@@ -1,7 +1,7 @@
 import "./SkillItemView.css";
 
 import { Box } from "@mui/material";
-import { RichTextBlock } from "../RichTextBlock";
+import { RichTextBlock } from "../../default/components/RichTextBlock";
 import { SkillForUser } from "@/types";
 
 export const SkillItemView = ({ skill }: { skill: SkillForUser }) => {

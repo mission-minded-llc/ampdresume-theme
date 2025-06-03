@@ -1,4 +1,13 @@
-import { Box, Fade, IconButton, Tab, Tabs, ThemeProvider, createTheme } from "@mui/material";
+import {
+  Box,
+  Fade,
+  IconButton,
+  Tab,
+  Tabs,
+  ThemeProvider,
+  Typography,
+  createTheme,
+} from "@mui/material";
 import {
   Company,
   Education as EducationType,
@@ -10,14 +19,15 @@ import {
 import { generateSocialUrl, getSocialIcon } from "@/util/social";
 import { useEffect, useState } from "react";
 
-import { Education } from "@/theme/default/components/Education";
+import { Education } from "@/theme/components/Education/Education";
 import { Icon } from "@iconify/react";
 import { MuiLink } from "@/components/MuiLink";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { QRGenerator } from "./components/QRGenerator";
-import { SkillsSection } from "./components/Skills";
+import { SkillsSection } from "./components/SkillsSection";
 import { WorkExperienceSection } from "./components/WorkExperience";
+import { usePathname } from "next/navigation";
 
 export const ThemeDavids = ({
   themeAppearance = "light",
@@ -36,6 +46,9 @@ export const ThemeDavids = ({
 }) => {
   const [active, setActive] = useState<number>(0);
   const [currentUrl, setCurrentUrl] = useState<string>("");
+
+  const pathname = usePathname();
+  const pdfUrl = `${pathname}/pdf`;
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -187,6 +200,12 @@ export const ThemeDavids = ({
                 <Icon icon={getSocialIcon(social)} width="30" height="30" />
               </MuiLink>
             ))}
+            <Typography component="div" sx={{ display: "flex", gap: 2, alignItems: "center" }}>
+              <Icon icon="catppuccin:pdf" width="24" height="24" />
+              <MuiLink href={pdfUrl} target="_blank">
+                View PDF
+              </MuiLink>
+            </Typography>
           </Box>
         </Box>
 
@@ -228,5 +247,3 @@ export const ThemeDavids = ({
     </ThemeProvider>
   );
 };
-
-// keep named export only; barrel file re-exports this component

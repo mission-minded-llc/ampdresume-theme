@@ -2,11 +2,9 @@
 
 import { Box, Button } from "@mui/material";
 
-import { ThemeDavidsPDF } from "@/theme/davids/ThemeDavidsPDF";
 import { ThemeDefaultPDF } from "@/theme/default/ThemeDefaultPDF";
 import { ThemeName } from "@/types";
 import html2pdf from "html2pdf.js";
-import { themeDavidsSampleData } from "@/theme/davids/sampleData";
 import { themeDefaultSampleData } from "@/theme/sampleData";
 import { useRef } from "react";
 
@@ -41,14 +39,6 @@ export const PDFView = ({ themeName }: PDFViewProps) => {
   const PDFViewThemeTemplate = () => {
     switch (themeName) {
       case "davids":
-        return (
-          <ThemeDavidsPDF
-            user={themeDavidsSampleData.data.resume.user}
-            skillsForUser={themeDavidsSampleData.data.resume.skillsForUser}
-            companies={themeDavidsSampleData.data.resume.companies}
-            education={themeDavidsSampleData.data.resume.education}
-          />
-        );
       case "default":
       default:
         return (
