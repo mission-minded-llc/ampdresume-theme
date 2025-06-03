@@ -20,7 +20,7 @@ describe("Theme Page", () => {
       const metadata = await generateMetadata({ params });
 
       expect(metadata.title).toBe(`Theme: ${themeName} ${titleSuffix}`);
-      expect(metadata.description).toBe(`This is the ${themeName} theme for Amp'd Resume.`);
+      expect(metadata.description).toBe(themeDefinitions[themeName].description);
       expect(Array.isArray(metadata.authors) && metadata.authors[0]?.name).toBe(
         themeDefinitions.default.authors[0].name,
       );
