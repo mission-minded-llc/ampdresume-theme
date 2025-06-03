@@ -1,13 +1,13 @@
 {
   "extends": "./tsconfig.json",
-  // We're using react-jsx because we're including React in the bundle. If we don't
-  // include it, the themes cannot render, and will fail with a "React is not defined"
-  // error. See: https://github.com/mission-minded-llc/ampdresume-theme/pull/24
-  "jsx": "react-jsx",
   "compilerOptions": {
     "incremental": false,
     "outDir": "dist",
-    "declaration": true
+    "declaration": true,
+    // We're using react-jsx because we're including React in the bundle. If we don't
+    // include it, the themes cannot render, and will fail with a "React is not defined"
+    // error. See: https://github.com/mission-minded-llc/ampdresume-theme/pull/24
+    "jsx": "react-jsx"
   },
   "include": ["src/exports.ts"]
 }
