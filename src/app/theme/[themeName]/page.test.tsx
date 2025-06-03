@@ -26,7 +26,7 @@ describe("Theme Page", () => {
       );
       expect(metadata.openGraph).toEqual({
         title: `Theme: ${themeName} ${titleSuffix}`,
-        description: `This is the ${themeName} theme for Amp'd Resume.`,
+        description: themeDefinitions[themeName].description,
         images: [],
       });
     });
