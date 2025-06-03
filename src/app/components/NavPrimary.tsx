@@ -5,6 +5,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import HomeIcon from "@mui/icons-material/Home";
+import { Icon } from "@iconify/react";
 import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -14,7 +15,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { MuiLink } from "@/components/MuiLink";
 import { ThemeAppearanceToggle } from "./ThemeAppearanceToggle";
 import Typography from "@mui/material/Typography";
-import { themeNavItems } from "@/theme/themeNavItems";
+import { themeDefinitions } from "@/constants";
 
 export const NavPrimary = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -129,8 +130,13 @@ export const NavPrimary = () => {
             <Typography variant="body1" sx={{ paddingLeft: 2, fontWeight: "bold" }}>
               Themes
             </Typography>
-            {themeNavItems.map((navItem) => (
-              <NavItem key={navItem.text} {...navItem} />
+            {Object.values(themeDefinitions).map((themeDefinition, index) => (
+              <NavItem
+                key={themeDefinition.name}
+                text={themeDefinition.name}
+                icon={<Icon icon={themeDefinition.iconifyIcon} />}
+                href={`/theme/${Object.keys(themeDefinitions)[index]}`}
+              />
             ))}
           </List>
           <Box

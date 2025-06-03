@@ -1,4 +1,4 @@
-import { themeAuthor, titleSuffix } from "@/constants";
+import { themeDefinitions, titleSuffix } from "@/constants";
 
 import { Metadata } from "next";
 import { ResumeView } from "./ResumeView";
@@ -13,15 +13,15 @@ export async function generateMetadata({
 
   const title = `Theme: ${themeName} ${titleSuffix}`;
   const description = `This is the ${themeName} theme for Amp'd Resume.`;
-  const author = themeAuthor?.[themeName] || themeAuthor?.default;
+  const authors =
+    themeDefinitions[themeName as ThemeName]?.authors || themeDefinitions.default.authors;
   return {
     title,
     description,
-    authors: [
-      {
-        name: author,
-      },
-    ],
+    authors: authors.map((author) => ({
+      name: author.name,
+      url: author.gitHubUrl || author.linkedInUrl || "",
+    })),
     openGraph: {
       title,
       description,

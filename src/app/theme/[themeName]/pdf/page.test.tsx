@@ -1,5 +1,5 @@
 import Page, { generateMetadata } from "./page";
-import { themeAuthor, titleSuffix } from "@/constants";
+import { themeDefinitions, titleSuffix } from "@/constants";
 
 import { ThemeName } from "@/types";
 import { render } from "@testing-library/react";
@@ -29,11 +29,10 @@ describe("PDF Theme Page", () => {
       expect(metadata).toEqual({
         title: `PDF Theme: default ${titleSuffix}`,
         description: "This is the default theme for Amp'd Resume.",
-        authors: [
-          {
-            name: themeAuthor?.default,
-          },
-        ],
+        authors: themeDefinitions.default.authors.map((author) => ({
+          name: author.name,
+          url: author.gitHubUrl || author.linkedInUrl || "",
+        })),
         openGraph: {
           title: `PDF Theme: default ${titleSuffix}`,
           description: "This is the default theme for Amp'd Resume.",
@@ -43,20 +42,21 @@ describe("PDF Theme Page", () => {
     });
 
     it("generates correct metadata for custom theme with author", async () => {
-      const customThemeParams = Promise.resolve({ themeName: "modern" as ThemeName });
+      const customThemeParams = Promise.resolve({ themeName: "davids" as ThemeName });
       const metadata = await generateMetadata({ params: customThemeParams });
 
       expect(metadata).toEqual({
-        title: `PDF Theme: modern ${titleSuffix}`,
-        description: "This is the modern theme for Amp'd Resume.",
+        title: `PDF Theme: davids ${titleSuffix}`,
+        description: "This is the davids theme for Amp'd Resume.",
         authors: [
           {
-            name: themeAuthor?.modern || themeAuthor?.default,
+            name: themeDefinitions.davids.authors[0].name,
+            url: themeDefinitions.davids.authors[0].gitHubUrl,
           },
         ],
         openGraph: {
-          title: `PDF Theme: modern ${titleSuffix}`,
-          description: "This is the modern theme for Amp'd Resume.",
+          title: `PDF Theme: davids ${titleSuffix}`,
+          description: "This is the davids theme for Amp'd Resume.",
           images: [],
         },
       });

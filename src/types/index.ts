@@ -21,6 +21,29 @@ export type ThemeAppearance = "dark" | "light";
 export type ThemeName = "default" | "davids"; // Add more themes here, e.g. "default" | "my-theme" | "another-theme"
 
 /**
+ * The ThemeAuthor interface is used to define the author of a theme
+ * and their social media links. These values are used to display the author's
+ * name and links to their GitHub and LinkedIn profiles, and may appear in the footer
+ * of a theme, or in meta tags.
+ */
+export type ThemeAuthor = {
+  name: string;
+  gitHubUrl?: string;
+  linkedInUrl?: string;
+};
+
+/**
+ * The ThemeDefinition interface is used to define the definition of a theme.
+ * This interface is used to define the theme's name, description, and authors.
+ */
+export type ThemeDefinition = {
+  name: string;
+  description: string;
+  iconifyIcon: string;
+  authors: ThemeAuthor[];
+};
+
+/**
  * The FeaturedProject interface is used to define a project that is featured on the user's resume.
  * This interface is used to render the project in the UI, and is used to define the project's
  * name, tech stack, description, metrics, links, and skills.
