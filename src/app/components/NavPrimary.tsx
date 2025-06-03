@@ -130,12 +130,12 @@ export const NavPrimary = () => {
             <Typography variant="body1" sx={{ paddingLeft: 2, fontWeight: "bold" }}>
               Themes
             </Typography>
-            {Object.values(themeDefinitions).map((themeDefinition, index) => (
+            {Object.entries(themeDefinitions).map(([themeKey, themeDefinition]) => (
               <NavItem
                 key={themeDefinition.name}
                 text={themeDefinition.name}
                 icon={<Icon icon={themeDefinition.iconifyIcon} />}
-                href={`/theme/${Object.keys(themeDefinitions)[index]}`}
+                href={`/theme/${themeKey}`}
               />
             ))}
           </List>
