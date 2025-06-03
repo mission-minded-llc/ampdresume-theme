@@ -28,6 +28,7 @@ import { QRGenerator } from "./components/QRGenerator";
 import { SkillsSection } from "./components/SkillsSection";
 import { WorkExperienceSection } from "./components/WorkExperience";
 import { usePathname } from "next/navigation";
+import { Summary } from "./components/Summary";
 
 export const ThemeDavids = ({
   themeAppearance = "light",
@@ -151,6 +152,16 @@ export const ThemeDavids = ({
           },
         },
       },
+      MuiTypography: {
+        styleOverrides: {
+          h4: {
+            color: themeAppearance === "dark" ? "#ffffff" : "#000000",
+          },
+          h2: {
+            color: themeAppearance === "dark" ? "#ffffff" : "#000000",
+          },
+        },
+      },
     },
   });
 
@@ -168,12 +179,16 @@ export const ThemeDavids = ({
       >
         {/* Resume Heading with social icons */}
         <Box sx={{ textAlign: "center", mt: 8, mb: 0 }}>
+          
           <Box component="h1" sx={{ fontSize: "2.5rem", fontWeight: "bold" }}>
             {user?.name}
           </Box>
           <Box component="span" sx={{ display: "block", fontSize: "1.5rem", mt: 1, pt: 1 }}>
             {user?.title}
           </Box>
+
+
+          
           <Box component="span" sx={{ fontSize: "1rem" }}>
             {user?.displayEmail}
             {user?.displayEmail && user?.location ? (
@@ -208,6 +223,9 @@ export const ThemeDavids = ({
             </Typography>
           </Box>
         </Box>
+
+        {/* Summary Section - NEW */}
+        <Summary user={user} />
 
         {/* Tabs & Nav buttons */}
         <Box
