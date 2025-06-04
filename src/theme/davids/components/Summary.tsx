@@ -52,7 +52,7 @@ export const Summary = ({ user }: SummaryProps) => {
         }}
       >
         {user.summary.length > 2500
-          ? `${user.summary.substring(0, 2499)}`
+          ? `${user.summary.substring(0, 2500)}`
           : user.summary}
       </Typography>
     </Box>

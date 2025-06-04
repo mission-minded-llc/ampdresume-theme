@@ -96,17 +96,17 @@ export const ThemeDavids = ({
         paper: themeAppearance === "dark" ? "#1e293b" : "#bbdefb", // dark slate vs light blue
       },
       primary: {
-        main: themeAppearance === "dark" ? "#3b82f6" : "#0d47a1", // bright blue vs navy
-        dark: themeAppearance === "dark" ? "#1e40af" : "#08306b",
+        main: themeAppearance === "dark" ? "#60a5fa" : "#0d47a1", // bright blue vs navy
+        dark: themeAppearance === "dark" ? "#60a5fa" : "#08306b",
         light: themeAppearance === "dark" ? "#60a5fa" : "#bbdefb", // skill pill background
         contrastText: themeAppearance === "dark" ? "#ffffff" : "#000000",
       },
       secondary: {
-        main: themeAppearance === "dark" ? "#06b6d4" : "#1565c0",
+        main: themeAppearance === "dark" ? "#60a5fa" : "#1565c0",
       },
       text: {
-        primary: themeAppearance === "dark" ? "#f8fafc" : "#000000",
-        secondary: themeAppearance === "dark" ? "#94a3b8" : "#1a237e",
+        primary: themeAppearance === "dark" ? "#60a5fa" : "#000000",
+        secondary: themeAppearance === "dark" ? "#60a5fa" : "#1a237e",
       },
     },
     components: {
@@ -135,9 +135,12 @@ export const ThemeDavids = ({
       MuiTab: {
         styleOverrides: {
           root: {
-            color: themeAppearance === "dark" ? "#94a3b8" : "#1a237e",
+            color: `${themeAppearance === "dark" ? "#60a5fa" : "#1a237e"} !important`,
             "&.Mui-selected": {
-              color: themeAppearance === "dark" ? "#3b82f6" : "#0d47a1",
+              color: `${themeAppearance === "dark" ? "#60a5fa" : "#0d47a1"} !important`,
+            },
+            "&:hover": {
+              color: `${themeAppearance === "dark" ? "#60a5fa" : "#1a237e"} !important`,
             },
           },
         },
@@ -145,9 +148,25 @@ export const ThemeDavids = ({
       MuiIconButton: {
         styleOverrides: {
           root: {
-            color: themeAppearance === "dark" ? "#94a3b8" : "#1a237e",
+            color: `${themeAppearance === "dark" ? "#60a5fa" : "#1a237e"} !important`,
             "&:hover": {
-              backgroundColor: themeAppearance === "dark" ? "#334155" : "#e3f2fd",
+              backgroundColor: themeAppearance === "dark" ? "transparent" : "#e3f2fd",
+              color: `${themeAppearance === "dark" ? "#60a5fa" : "#1a237e"} !important`,
+            },
+            "&:focus": {
+              backgroundColor: themeAppearance === "dark" ? "transparent" : "#e3f2fd",
+              color: `${themeAppearance === "dark" ? "#60a5fa" : "#1a237e"} !important`,
+            },
+            "&:active": {
+              backgroundColor: themeAppearance === "dark" ? "rgba(255, 255, 255, 0.05)" : "#bbdefb",
+              color: `${themeAppearance === "dark" ? "#60a5fa" : "#1a237e"} !important`,
+            },
+            "&.Mui-focusVisible": {
+              backgroundColor: themeAppearance === "dark" ? "transparent" : "#e3f2fd",
+              color: `${themeAppearance === "dark" ? "#60a5fa" : "#1a237e"} !important`,
+            },
+            "& .MuiSvgIcon-root": {
+              color: `${themeAppearance === "dark" ? "#60a5fa" : "#1a237e"} !important`,
             },
           },
         },
@@ -224,7 +243,6 @@ export const ThemeDavids = ({
           </Box>
         </Box>
 
-        {/* Summary Section - NEW */}
         <Summary user={user} />
 
         {/* Tabs & Nav buttons */}
@@ -236,7 +254,16 @@ export const ThemeDavids = ({
             mt: 4,
           }}
         >
-          <IconButton onClick={() => cycle(-1)} aria-label="Previous section">
+          <IconButton 
+            onClick={() => cycle(-1)} 
+            aria-label="Previous section"
+            sx={{
+              color: themeAppearance === "dark" ? "#60a5fa !important" : "#1a237e",
+              "& .MuiSvgIcon-root": {
+                color: themeAppearance === "dark" ? "#60a5fa !important" : "#1a237e",
+              },
+            }}
+          >
             <NavigateBeforeIcon />
           </IconButton>
           <Tabs
@@ -244,13 +271,40 @@ export const ThemeDavids = ({
             onChange={(_, v) => setActive(v)}
             variant="scrollable"
             scrollButtons="auto"
-            sx={{ mx: 2 }}
+            sx={{ 
+              mx: 2,
+              "& .MuiTab-root": {
+                color: themeAppearance === "dark" ? "#60a5fa !important" : "#1a237e",
+              },
+              "& .MuiTab-root.Mui-selected": {
+                color: themeAppearance === "dark" ? "#60a5fa !important" : "#0d47a1",
+              },
+            }}
           >
             {sections.map((s, idx) => (
-              <Tab key={s.label} label={s.label} value={idx} />
+              <Tab 
+                key={s.label} 
+                label={s.label} 
+                value={idx}
+                sx={{
+                  color: themeAppearance === "dark" ? "#60a5fa !important" : "#1a237e",
+                  "&.Mui-selected": {
+                    color: themeAppearance === "dark" ? "#60a5fa !important" : "#0d47a1",
+                  },
+                }}
+              />
             ))}
           </Tabs>
-          <IconButton onClick={() => cycle(1)} aria-label="Next section">
+          <IconButton 
+            onClick={() => cycle(1)} 
+            aria-label="Next section"
+            sx={{
+              color: themeAppearance === "dark" ? "#60a5fa !important" : "#1a237e",
+              "& .MuiSvgIcon-root": {
+                color: themeAppearance === "dark" ? "#60a5fa !important" : "#1a237e",
+              },
+            }}
+          >
             <NavigateNextIcon />
           </IconButton>
         </Box>
