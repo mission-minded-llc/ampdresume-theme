@@ -198,7 +198,6 @@ export const ThemeDavids = ({
       >
         {/* Resume Heading with social icons */}
         <Box sx={{ textAlign: "center", mt: 8, mb: 0 }}>
-          
           <Box component="h1" sx={{ fontSize: "2.5rem", fontWeight: "bold" }}>
             {user?.name}
           </Box>
@@ -206,8 +205,6 @@ export const ThemeDavids = ({
             {user?.title}
           </Box>
 
-
-          
           <Box component="span" sx={{ fontSize: "1rem" }}>
             {user?.displayEmail}
             {user?.displayEmail && user?.location ? (
@@ -254,8 +251,8 @@ export const ThemeDavids = ({
             mt: 4,
           }}
         >
-          <IconButton 
-            onClick={() => cycle(-1)} 
+          <IconButton
+            onClick={() => cycle(-1)}
             aria-label="Previous section"
             sx={{
               color: themeAppearance === "dark" ? "#60a5fa !important" : "#1a237e",
@@ -271,7 +268,7 @@ export const ThemeDavids = ({
             onChange={(_, v) => setActive(v)}
             variant="scrollable"
             scrollButtons="auto"
-            sx={{ 
+            sx={{
               mx: 2,
               "& .MuiTab-root": {
                 color: themeAppearance === "dark" ? "#60a5fa !important" : "#1a237e",
@@ -282,9 +279,9 @@ export const ThemeDavids = ({
             }}
           >
             {sections.map((s, idx) => (
-              <Tab 
-                key={s.label} 
-                label={s.label} 
+              <Tab
+                key={s.label}
+                label={s.label}
                 value={idx}
                 sx={{
                   color: themeAppearance === "dark" ? "#60a5fa !important" : "#1a237e",
@@ -295,8 +292,8 @@ export const ThemeDavids = ({
               />
             ))}
           </Tabs>
-          <IconButton 
-            onClick={() => cycle(1)} 
+          <IconButton
+            onClick={() => cycle(1)}
             aria-label="Next section"
             sx={{
               color: themeAppearance === "dark" ? "#60a5fa !important" : "#1a237e",
