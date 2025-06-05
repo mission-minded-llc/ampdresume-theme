@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import { Project } from "@/types";
-import { SkillItem } from "../Skills/SkillItem";
-import { SkillsContextProvider } from "../Skills/Skills";
+import { SkillItem } from "@/theme/components/Skills/SkillItem";
+import { SkillsContextProvider } from "@/theme/components/Skills/Skills";
 
 /**
  * This contains the top-level project description and skill tags. It can

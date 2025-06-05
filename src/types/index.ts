@@ -18,7 +18,44 @@ export type ThemeAppearance = "dark" | "light";
  * dashes instead of spaces. This value is used to determine which theme gets rendered
  * on the Amp'd Resume site, and should be unique to each theme.
  */
-export type ThemeName = "default"; // Add more themes here, e.g. "default" | "my-theme" | "another-theme"
+export type ThemeName = "default" | "davids"; // Add more themes here, e.g. "default" | "my-theme" | "another-theme"
+
+/**
+ * The ThemeAuthor interface is used to define the author of a theme
+ * and their social media links. These values are used to display the author's
+ * name and links to their GitHub and LinkedIn profiles, and may appear in the footer
+ * of a theme, or in meta tags.
+ */
+export type ThemeAuthor = {
+  name: string;
+  gitHubUrl?: string;
+  linkedInUrl?: string;
+};
+
+/**
+ * The ThemeDefinition interface is used to define the definition of a theme.
+ * This interface is used to define the theme's name, description, and authors.
+ */
+export type ThemeDefinition = {
+  name: string;
+  description: string;
+  iconifyIcon: string;
+  authors: ThemeAuthor[];
+};
+
+/**
+ * The FeaturedProject interface is used to define a project that is featured on the user's resume.
+ * This interface is used to render the project in the UI, and is used to define the project's
+ * name, tech stack, description, metrics, links, and skills.
+ */
+export interface FeaturedProject {
+  name: string;
+  techStack: string;
+  description: string[];
+  metrics?: string;
+  links?: { label: string; url: string }[];
+  skillsForProject?: SkillForProject[];
+}
 
 /**
  * The ResumeData object is the main data object that contains all the user's information,
@@ -67,6 +104,9 @@ export interface User {
 
   // The user's title, e.g. "Software Engineer".
   title: string | null;
+
+  // The user's summary or bio text that appears on their resume.
+  summary?: string;
 }
 
 /**
@@ -242,4 +282,19 @@ export interface Education {
 
   // The date awarded in timestamp format. It is displayed as a month/year format.
   dateAwarded: string;
+}
+
+// Certification type for the Certifications section
+export interface Certification {
+  // Certification name
+  name: string;
+
+  // Issuing Organization
+  issuer: string;
+
+  // Date Earned or Expected
+  date?: string;
+
+  // (Optional) Credential URL or ID
+  credentialUrl?: string;
 }

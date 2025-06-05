@@ -38,6 +38,7 @@ export const PDFView = ({ themeName }: PDFViewProps) => {
 
   const PDFViewThemeTemplate = () => {
     switch (themeName) {
+      case "davids":
       case "default":
       default:
         return (
