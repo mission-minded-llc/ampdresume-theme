@@ -18,7 +18,30 @@ export type ThemeAppearance = "dark" | "light";
  * dashes instead of spaces. This value is used to determine which theme gets rendered
  * on the Amp'd Resume site, and should be unique to each theme.
  */
-export type ThemeName = "default"; // Add more themes here, e.g. "default" | "my-theme" | "another-theme"
+export type ThemeName = "default" | "davids"; // Add more themes here, e.g. "default" | "my-theme" | "another-theme"
+
+/**
+ * The ThemeAuthor interface is used to define the author of a theme
+ * and their social media links. These values are used to display the author's
+ * name and links to their GitHub and LinkedIn profiles, and may appear in the footer
+ * of a theme, or in meta tags.
+ */
+export type ThemeAuthor = {
+  name: string;
+  gitHubUrl?: string;
+  linkedInUrl?: string;
+};
+
+/**
+ * The ThemeDefinition interface is used to define the definition of a theme.
+ * This interface is used to define the theme's name, description, and authors.
+ */
+export type ThemeDefinition = {
+  name: string;
+  description: string;
+  iconifyIcon: string;
+  authors: ThemeAuthor[];
+};
 
 /**
  * The ResumeData object is the main data object that contains all the user's information,
@@ -30,6 +53,9 @@ export interface ResumeData {
   socials: Social[];
   skillsForUser: SkillForUser[];
   companies: Company[];
+  // TODO: Ensure FeaturedProject and Certification are required after the backend is updated.
+  featuredProjects?: FeaturedProject[];
+  certifications?: Certification[];
   education: Education[];
 }
 
@@ -67,6 +93,9 @@ export interface User {
 
   // The user's title, e.g. "Software Engineer".
   title: string | null;
+
+  // The user's summary or bio text that appears on their resume.
+  summary?: string;
 }
 
 /**
@@ -227,6 +256,38 @@ export interface Project {
 }
 
 /**
+ * A SkillForFeaturedProject is a single SkillForUser item associated with a featured project,
+ * which can include additional customized information such as a description.
+ */
+export interface SkillForFeaturedProject {
+  id: string;
+  description: string | null;
+
+  skillForUser: SkillForUser;
+}
+
+/**
+ * The FeaturedProject interface is used to define a project that is featured on the user's resume.
+ * This interface is used to render the project in the UI, and is used to define the project's
+ * name, description, links, and skills.
+ */
+export interface FeaturedProject {
+  id: string;
+
+  // The name of the featured project, e.g. "My Awesome Project"
+  name: string;
+
+  // The description of the featured project, e.g. "A description of my awesome project"
+  description: string | null;
+
+  // The links associated with the featured project, e.g. { label: "GitHub", url: "https://github.com/johndoe/my-awesome-project" }
+  links: { label: string; url: string }[];
+
+  // The skills associated with the featured project, which can contain one or more skills specific to this project.
+  skillsForFeaturedProject: SkillForFeaturedProject[];
+}
+
+/**
  * An Education is a single education item associated with a user's education history.
  */
 export interface Education {
@@ -242,4 +303,22 @@ export interface Education {
 
   // The date awarded in timestamp format. It is displayed as a month/year format.
   dateAwarded: string;
+}
+
+// Certification type for the Certifications section
+export interface Certification {
+  // Certification name
+  name: string;
+
+  // Issuing Organization
+  issuer: string;
+
+  // Date Earned or Expected
+  dateAwarded: string;
+
+  // Credential URL
+  credentialUrl?: string | null;
+
+  // Credential ID
+  credentialId?: string | null;
 }

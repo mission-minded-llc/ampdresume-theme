@@ -13,7 +13,7 @@ jest.mock("./PositionsList", () => ({
   ),
 }));
 
-jest.mock("../ResumeTitle", () => ({
+jest.mock("@/theme/components/ResumeTitle/ResumeTitle", () => ({
   ResumeTitle: ({ children }: { children: React.ReactNode }) => <h2>{children}</h2>,
 }));
 

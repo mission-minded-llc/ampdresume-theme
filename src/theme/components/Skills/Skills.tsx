@@ -4,7 +4,7 @@ import { Box, Button } from "@mui/material";
 import React, { MouseEvent, useState } from "react";
 import { SkillForUser, SkillType } from "@/types";
 
-import { ResumeTitle } from "../ResumeTitle";
+import { ResumeTitle } from "../ResumeTitle/ResumeTitle";
 import { SkillsCloud } from "./SkillsCloud";
 import { SkillsExperience } from "./SkillsExperience";
 

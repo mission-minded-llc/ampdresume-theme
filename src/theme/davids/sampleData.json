@@ -1,0 +1,134 @@
+{
+  "data": {
+    "resume": {
+      "user": {
+        "id": "1",
+        "name": "Test User",
+        "displayEmail": "testuser@gmail.com",
+        "location": "San Francisco, CA",
+        "title": "Senior Staff Software Engineer",
+        "summary": "Senior Software Engineer with over 7 years of experience designing, developing, and deploying robust, scalable web and backend applications across diverse industries including fintech, e-commerce, and enterprise SaaS. Proven track record of leading full-stack development projects, optimizing system architecture, and mentoring engineering teams to deliver high-quality software on time and within scope.",
+        "siteTitle": "Test User Resume",
+        "siteDescription": "Resume of Test User",
+        "siteImage": null
+      },
+      "socials": [
+        { "id": "1", "userId": "1", "platform": "linkedin.com", "ref": "testuser" },
+        { "id": "2", "userId": "1", "platform": "github.com", "ref": "testuser" },
+        { "id": "3", "userId": "1", "platform": "twitter.com", "ref": "testuser" }
+      ],
+      "skillsForUser": [
+        {
+          "id": "1",
+          "userId": "1",
+          "skill": { "id": "1", "name": "TypeScript", "icon": null },
+          "icon": null,
+          "description": "Expert in TypeScript for large-scale applications.",
+          "yearStarted": 2014,
+          "totalYears": 10
+        },
+        {
+          "id": "2",
+          "userId": "1",
+          "skill": { "id": "2", "name": "React", "icon": null },
+          "icon": null,
+          "description": "Built and led React projects at scale.",
+          "yearStarted": 2015,
+          "totalYears": 9
+        },
+        {
+          "id": "3",
+          "userId": "1",
+          "skill": { "id": "3", "name": "Node.js", "icon": null },
+          "icon": null,
+          "description": "Architected Node.js microservices.",
+          "yearStarted": 2013,
+          "totalYears": 11
+        },
+        {
+          "id": "4",
+          "userId": "1",
+          "skill": { "id": "4", "name": "AWS", "icon": null },
+          "icon": null,
+          "description": "Designed cloud infrastructure on AWS.",
+          "yearStarted": 2016,
+          "totalYears": 8
+        },
+        {
+          "id": "5",
+          "userId": "1",
+          "skill": { "id": "5", "name": "Kubernetes", "icon": null },
+          "icon": null,
+          "description": "Deployed and managed Kubernetes clusters.",
+          "yearStarted": 2017,
+          "totalYears": 7
+        }
+      ],
+      "companies": [
+        {
+          "id": "1",
+          "name": "Tech Innovators Inc.",
+          "location": "San Francisco, CA",
+          "startDate": "1451606400000",
+          "endDate": null,
+          "positions": [
+            {
+              "id": "1",
+              "title": "Senior Staff Software Engineer",
+              "startDate": "1451606400000",
+              "endDate": null,
+              "projects": [
+                {
+                  "id": "1",
+                  "name": "NextGen Platform Migration",
+                  "description": "Led migration of legacy systems to a scalable cloud-native platform using Kubernetes and AWS.",
+                  "sortIndex": 0,
+                  "skillsForProject": []
+                },
+                {
+                  "id": "2",
+                  "name": "Realtime Analytics Engine",
+                  "description": "Architected and implemented a real-time analytics engine processing millions of events per day.",
+                  "sortIndex": 1,
+                  "skillsForProject": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "name": "Cloud Solutions LLC",
+          "location": "Remote",
+          "startDate": "1388534400000",
+          "endDate": "1451520000000",
+          "positions": [
+            {
+              "id": "2",
+              "title": "Lead Software Engineer",
+              "startDate": "1388534400000",
+              "endDate": "1451520000000",
+              "projects": [
+                {
+                  "id": "3",
+                  "name": "API Gateway Development",
+                  "description": "Designed and built a secure, high-throughput API gateway in Node.js.",
+                  "sortIndex": 0,
+                  "skillsForProject": []
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "education": [
+        {
+          "id": "1",
+          "school": "Stanford University",
+          "degree": "B.S. Computer Science",
+          "dateAwarded": "1370044800000"
+        }
+      ]
+    }
+  }
+}
