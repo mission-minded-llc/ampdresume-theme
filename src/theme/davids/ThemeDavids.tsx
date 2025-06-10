@@ -17,7 +17,8 @@ import {
   User,
 } from "@/types";
 import { generateSocialUrl, getSocialIcon } from "@/util/social";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { ThemeAppearanceContext } from "@/app/components/ThemeContext";
 
 import { Education } from "@/theme/components/Education/Education";
 import { Icon } from "@iconify/react";
@@ -31,7 +32,7 @@ import { usePathname } from "next/navigation";
 import { Summary } from "./components/Summary";
 
 export const ThemeDavids = ({
-  themeAppearance = "light",
+  themeAppearance: themeAppearanceProp,
   user,
   socials = [],
   skillsForUser = [],
@@ -45,6 +46,8 @@ export const ThemeDavids = ({
   companies?: Company[];
   education?: EducationType[];
 }) => {
+  const { themeAppearance: contextThemeAppearance } = useContext(ThemeAppearanceContext);
+  const themeAppearance = themeAppearanceProp ?? contextThemeAppearance ?? "light";
   const [active, setActive] = useState<number>(0);
   const [currentUrl, setCurrentUrl] = useState<string>("");
 
@@ -105,8 +108,8 @@ export const ThemeDavids = ({
         main: themeAppearance === "dark" ? "#60a5fa" : "#1565c0",
       },
       text: {
-        primary: themeAppearance === "dark" ? "#60a5fa" : "#000000",
-        secondary: themeAppearance === "dark" ? "#60a5fa" : "#1a237e",
+        primary: themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1",
+        secondary: themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1",
       },
     },
     components: {
@@ -128,56 +131,33 @@ export const ThemeDavids = ({
       MuiTabs: {
         styleOverrides: {
           indicator: {
-            backgroundColor: themeAppearance === "dark" ? "#3b82f6" : "#0d47a1",
-          },
-        },
-      },
-      MuiTab: {
-        styleOverrides: {
-          root: {
-            color: `${themeAppearance === "dark" ? "#60a5fa" : "#1a237e"} !important`,
-            "&.Mui-selected": {
-              color: `${themeAppearance === "dark" ? "#60a5fa" : "#0d47a1"} !important`,
-            },
-            "&:hover": {
-              color: `${themeAppearance === "dark" ? "#60a5fa" : "#1a237e"} !important`,
-            },
+            backgroundColor: themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1",
           },
         },
       },
       MuiIconButton: {
         styleOverrides: {
           root: {
-            color: `${themeAppearance === "dark" ? "#60a5fa" : "#1a237e"} !important`,
+            color: `${themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1"} !important`,
             "&:hover": {
               backgroundColor: themeAppearance === "dark" ? "transparent" : "#e3f2fd",
-              color: `${themeAppearance === "dark" ? "#60a5fa" : "#1a237e"} !important`,
+              color: `${themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1"} !important`,
             },
             "&:focus": {
               backgroundColor: themeAppearance === "dark" ? "transparent" : "#e3f2fd",
-              color: `${themeAppearance === "dark" ? "#60a5fa" : "#1a237e"} !important`,
+              color: `${themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1"} !important`,
             },
             "&:active": {
               backgroundColor: themeAppearance === "dark" ? "rgba(255, 255, 255, 0.05)" : "#bbdefb",
-              color: `${themeAppearance === "dark" ? "#60a5fa" : "#1a237e"} !important`,
+              color: `${themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1"} !important`,
             },
             "&.Mui-focusVisible": {
               backgroundColor: themeAppearance === "dark" ? "transparent" : "#e3f2fd",
-              color: `${themeAppearance === "dark" ? "#60a5fa" : "#1a237e"} !important`,
+              color: `${themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1"} !important`,
             },
             "& .MuiSvgIcon-root": {
-              color: `${themeAppearance === "dark" ? "#60a5fa" : "#1a237e"} !important`,
+              color: `${themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1"} !important`,
             },
-          },
-        },
-      },
-      MuiTypography: {
-        styleOverrides: {
-          h4: {
-            color: themeAppearance === "dark" ? "#ffffff" : "#000000",
-          },
-          h2: {
-            color: themeAppearance === "dark" ? "#ffffff" : "#000000",
           },
         },
       },
@@ -226,16 +206,48 @@ export const ThemeDavids = ({
           <Box
             sx={{ display: "flex", alignItems: "center", justifyContent: "center", mt: 2, gap: 2 }}
           >
-            {socials?.map((social) => (
-              <MuiLink href={generateSocialUrl(social)} key={social.id} target="_blank">
-                <Icon icon={getSocialIcon(social)} width="30" height="30" />
-              </MuiLink>
-            ))}
-            <Typography component="div" sx={{ display: "flex", gap: 2, alignItems: "center" }}>
-              <Icon icon="catppuccin:pdf" width="24" height="24" />
-              <MuiLink href={pdfUrl} target="_blank">
+            {socials?.map((social) => {
+              const platform = social.platform.toLowerCase();
+              let icon = getSocialIcon(social);
+              let url = generateSocialUrl(social);
+
+              if (platform.includes("github")) {
+                icon = "mdi:github";
+                url = `https://github.com/${social.ref}`;
+              } else if (platform.includes("linkedin")) {
+                icon = "devicon:linkedin";
+                url = `https://www.linkedin.com/in/${social.ref}`;
+              } else if (platform.includes("twitter") || platform.includes("x")) {
+                icon = "ri:twitter-x-fill";
+                url = `https://x.com/${social.ref}`;
+              }
+
+              return (
+                <MuiLink href={url} key={social.id} target="_blank">
+                  <Icon
+                    icon={icon}
+                    width="30"
+                    height="30"
+                    color={themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1"}
+                  />
+                </MuiLink>
+              );
+            })}
+            <Typography
+              component="span"
+              sx={{
+                color: themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1",
+              }}
+            >
+              <Icon
+                icon="catppuccin:pdf"
+                width="24"
+                height="24"
+                color={themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1"}
+              />
+              <a href={pdfUrl} target="_blank" style={{ color: "inherit", textDecoration: "none" }}>
                 View PDF
-              </MuiLink>
+              </a>
             </Typography>
           </Box>
         </Box>
@@ -255,9 +267,9 @@ export const ThemeDavids = ({
             onClick={() => cycle(-1)}
             aria-label="Previous section"
             sx={{
-              color: themeAppearance === "dark" ? "#60a5fa !important" : "#1a237e",
+              color: themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1",
               "& .MuiSvgIcon-root": {
-                color: themeAppearance === "dark" ? "#60a5fa !important" : "#1a237e",
+                color: themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1",
               },
             }}
           >
@@ -268,15 +280,7 @@ export const ThemeDavids = ({
             onChange={(_, v) => setActive(v)}
             variant="scrollable"
             scrollButtons="auto"
-            sx={{
-              mx: 2,
-              "& .MuiTab-root": {
-                color: themeAppearance === "dark" ? "#60a5fa !important" : "#1a237e",
-              },
-              "& .MuiTab-root.Mui-selected": {
-                color: themeAppearance === "dark" ? "#60a5fa !important" : "#0d47a1",
-              },
-            }}
+            sx={{ mx: 2 }}
           >
             {sections.map((s, idx) => (
               <Tab
@@ -284,9 +288,12 @@ export const ThemeDavids = ({
                 label={s.label}
                 value={idx}
                 sx={{
-                  color: themeAppearance === "dark" ? "#60a5fa !important" : "#1a237e",
+                  color: themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1",
                   "&.Mui-selected": {
-                    color: themeAppearance === "dark" ? "#60a5fa !important" : "#0d47a1",
+                    color: themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1",
+                  },
+                  "&:hover": {
+                    color: themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1",
                   },
                 }}
               />
@@ -296,9 +303,9 @@ export const ThemeDavids = ({
             onClick={() => cycle(1)}
             aria-label="Next section"
             sx={{
-              color: themeAppearance === "dark" ? "#60a5fa !important" : "#1a237e",
+              color: themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1",
               "& .MuiSvgIcon-root": {
-                color: themeAppearance === "dark" ? "#60a5fa !important" : "#1a237e",
+                color: themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1",
               },
             }}
           >
