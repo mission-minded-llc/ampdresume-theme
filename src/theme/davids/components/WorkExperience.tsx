@@ -1,6 +1,7 @@
 import { Box, useTheme } from "@mui/material";
 
 import { Company } from "@/types";
+import { RichTextBlock } from "@/theme/default/components/RichTextBlock";
 
 interface WorkExperienceSectionProps {
   companies: Company[];
@@ -69,9 +70,7 @@ export const WorkExperienceSection = ({ companies }: WorkExperienceSectionProps)
                   }}
                 >
                   <Box sx={{ fontWeight: "bold" }}>{project.name}</Box>
-                  {project.description && (
-                    <Box sx={{ fontStyle: "italic", mb: 0.5 }}>{project.description}</Box>
-                  )}
+                  <RichTextBlock content={project?.description} />
                   {Array.isArray(project.skillsForProject) &&
                     project.skillsForProject.length > 0 && (
                       <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mt: 1 }}>

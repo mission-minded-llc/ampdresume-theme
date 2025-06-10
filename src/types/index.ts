@@ -53,6 +53,9 @@ export interface ResumeData {
   socials: Social[];
   skillsForUser: SkillForUser[];
   companies: Company[];
+  // TODO: Ensure FeaturedProject and Certification are required after the backend is updated.
+  featuredProjects?: FeaturedProject[];
+  certifications?: Certification[];
   education: Education[];
 }
 
@@ -314,8 +317,8 @@ export interface Certification {
   dateAwarded: string;
 
   // Credential URL
-  credentialUrl: string | null;
+  credentialUrl?: string | null;
 
   // Credential ID
-  credentialId: string | null;
+  credentialId?: string | null;
 }
