@@ -1,6 +1,7 @@
 import { Box, useTheme } from "@mui/material";
 
 import { FeaturedProject } from "@/types";
+import { RichTextBlock } from "@/theme/components/RichTextBlock";
 
 interface FeaturedProjectsProps {
   projects: FeaturedProject[];
@@ -12,20 +13,16 @@ export const FeaturedProjects = ({ projects }: FeaturedProjectsProps) => {
   return (
     <Box data-testid="featured-projects">
       {projects.map((proj) => {
-        const skillsForProject = Array.isArray(proj.skillsForProject) ? proj.skillsForProject : [];
-        const safeProj = { ...proj, skillsForProject };
+        const skillsForFeaturedProject = Array.isArray(proj.skillsForFeaturedProject)
+          ? proj.skillsForFeaturedProject
+          : [];
+        const safeProj = { ...proj, skillsForFeaturedProject };
         return (
           <Box key={safeProj.name} sx={{ mb: 3 }}>
             <Box component="h3" sx={{ fontWeight: "bold", mb: 0.5 }}>
               {safeProj.name}
             </Box>
-            <Box sx={{ fontStyle: "italic", mb: 0.5 }}>{safeProj.techStack}</Box>
-            <ul style={{ marginTop: 0, marginBottom: 0 }}>
-              {safeProj.description.map((point, idx) => (
-                <li key={idx}>{point}</li>
-              ))}
-            </ul>
-            {safeProj.metrics && <Box sx={{ mt: 0.5 }}>{safeProj.metrics}</Box>}
+            <RichTextBlock content={safeProj?.description} />
             {safeProj.links && safeProj.links.length > 0 && (
               <Box sx={{ mt: 0.5 }}>
                 {safeProj.links.map((link, idx) => (
@@ -45,11 +42,11 @@ export const FeaturedProjects = ({ projects }: FeaturedProjectsProps) => {
                 ))}
               </Box>
             )}
-            {safeProj.skillsForProject.length > 0 && (
+            {safeProj.skillsForFeaturedProject.length > 0 && (
               <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mt: 1 }}>
-                {safeProj.skillsForProject.map((skillForProject) => (
+                {safeProj.skillsForFeaturedProject.map((skillForFeaturedProject) => (
                   <Box
-                    key={skillForProject.id}
+                    key={skillForFeaturedProject.id}
                     sx={{
                       display: "inline-block",
                       background: theme.palette.primary.light,
@@ -62,7 +59,7 @@ export const FeaturedProjects = ({ projects }: FeaturedProjectsProps) => {
                       mb: 1,
                     }}
                   >
-                    {skillForProject.skillForUser?.skill?.name}
+                    {skillForFeaturedProject.skillForUser?.skill?.name}
                   </Box>
                 ))}
               </Box>

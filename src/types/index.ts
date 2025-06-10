@@ -44,20 +44,6 @@ export type ThemeDefinition = {
 };
 
 /**
- * The FeaturedProject interface is used to define a project that is featured on the user's resume.
- * This interface is used to render the project in the UI, and is used to define the project's
- * name, tech stack, description, metrics, links, and skills.
- */
-export interface FeaturedProject {
-  name: string;
-  techStack: string;
-  description: string[];
-  metrics?: string;
-  links?: { label: string; url: string }[];
-  skillsForProject?: SkillForProject[];
-}
-
-/**
  * The ResumeData object is the main data object that contains all the user's information,
  * including their personal details, social media links, skills, work experience, education,
  * and other details. This object is used to render the user's resume in the UI.
@@ -67,6 +53,9 @@ export interface ResumeData {
   socials: Social[];
   skillsForUser: SkillForUser[];
   companies: Company[];
+  // TODO: Ensure FeaturedProject and Certification are required after the backend is updated.
+  featuredProjects?: FeaturedProject[];
+  certifications?: Certification[];
   education: Education[];
 }
 
@@ -267,6 +256,38 @@ export interface Project {
 }
 
 /**
+ * A SkillForFeaturedProject is a single SkillForUser item associated with a featured project,
+ * which can include additional customized information such as a description.
+ */
+export interface SkillForFeaturedProject {
+  id: string;
+  description: string | null;
+
+  skillForUser: SkillForUser;
+}
+
+/**
+ * The FeaturedProject interface is used to define a project that is featured on the user's resume.
+ * This interface is used to render the project in the UI, and is used to define the project's
+ * name, description, links, and skills.
+ */
+export interface FeaturedProject {
+  id: string;
+
+  // The name of the featured project, e.g. "My Awesome Project"
+  name: string;
+
+  // The description of the featured project, e.g. "A description of my awesome project"
+  description: string | null;
+
+  // The links associated with the featured project, e.g. { label: "GitHub", url: "https://github.com/johndoe/my-awesome-project" }
+  links: { label: string; url: string }[];
+
+  // The skills associated with the featured project, which can contain one or more skills specific to this project.
+  skillsForFeaturedProject: SkillForFeaturedProject[];
+}
+
+/**
  * An Education is a single education item associated with a user's education history.
  */
 export interface Education {
@@ -293,8 +314,11 @@ export interface Certification {
   issuer: string;
 
   // Date Earned or Expected
-  date?: string;
+  dateAwarded: string;
 
-  // (Optional) Credential URL or ID
-  credentialUrl?: string;
+  // Credential URL
+  credentialUrl?: string | null;
+
+  // Credential ID
+  credentialId?: string | null;
 }

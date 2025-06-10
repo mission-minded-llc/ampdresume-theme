@@ -18,7 +18,11 @@ export const CertificationsSection = ({ certifications }: CertificationsSectionP
           </Box>
           <Box sx={{ mb: 0.5 }}>
             {cert.issuer}
-            {cert.date && ` – ${cert.date}`}
+            {cert.dateAwarded &&
+              ` – ${new Date(Number(cert.dateAwarded)).toLocaleDateString(undefined, {
+                year: "numeric",
+                month: "long",
+              })}`}
           </Box>
           {cert.credentialUrl && (
             <Box>
