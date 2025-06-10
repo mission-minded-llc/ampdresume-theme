@@ -221,16 +221,15 @@ export const ThemeDavids = ({
                 icon = "ri:twitter-x-fill";
                 url = `https://x.com/${social.ref}`;
               }
-
               return (
-                <MuiLink href={url} key={social.id} target="_blank">
+                <a href={url} key={social.id} target="_blank" rel="noopener noreferrer">
                   <Icon
                     icon={icon}
                     width="30"
                     height="30"
                     color={themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1"}
                   />
-                </MuiLink>
+                </a>
               );
             })}
             <Typography
@@ -245,7 +244,7 @@ export const ThemeDavids = ({
                 height="24"
                 color={themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1"}
               />
-              <a href={pdfUrl} target="_blank" style={{ color: "inherit", textDecoration: "none" }}>
+              <a href={pdfUrl} target="_blank" rel="noopener noreferrer" style={{ color: "inherit", textDecoration: "none" }}>
                 View PDF
               </a>
             </Typography>
