@@ -1,7 +1,7 @@
 import { Box, useTheme } from "@mui/material";
 
 import { FeaturedProject } from "@/types";
-import { RichTextBlock } from "@/theme/default/components/RichTextBlock";
+import { RichTextBlock } from "@/theme/components/RichTextBlock";
 
 interface FeaturedProjectsProps {
   projects: FeaturedProject[];

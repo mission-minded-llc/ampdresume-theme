@@ -4,7 +4,7 @@ import { SyntheticEvent, useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Project } from "@/types";
 import { ProjectItem } from "./ProjectItem";
-import { RichTextBlock } from "../RichTextBlock";
+import { RichTextBlock } from "@/theme/components/RichTextBlock";
 
 export const ProjectAccordion = ({ project }: { project: Project }) => {
   const [expanded, setExpanded] = useState(false);
