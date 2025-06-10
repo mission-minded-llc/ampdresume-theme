@@ -9,13 +9,13 @@ const mockCertifications: Certification[] = [
   {
     name: "AWS Certified Solutions Architect",
     issuer: "Amazon Web Services",
-    date: "2023",
+    dateAwarded: "1672531200000", // Jan 1, 2023 UTC
     credentialUrl: "https://aws.amazon.com/certification/",
   },
   {
     name: "Google Cloud Professional Developer",
     issuer: "Google Cloud",
-    date: "2022",
+    dateAwarded: "1672531200000", // Jan 1, 2023 UTC
   },
 ];
 
@@ -35,12 +35,12 @@ describe("CertificationsSection", () => {
     // Check if all issuers and dates are rendered together
     expect(
       screen.getByText((content, element) => {
-        return element?.textContent === "Amazon Web Services – 2023";
+        return element?.textContent === "Amazon Web Services – January 2023";
       }),
     ).toBeInTheDocument();
     expect(
       screen.getByText((content, element) => {
-        return element?.textContent === "Google Cloud – 2022";
+        return element?.textContent === "Google Cloud – January 2023";
       }),
     ).toBeInTheDocument();
   });
@@ -65,6 +65,7 @@ describe("CertificationsSection", () => {
 
   it("renders empty section when no certifications are provided", () => {
     renderWithTheme(<CertificationsSection certifications={[]} />);
+
     // Use a more specific selector to get the outer container
     const container = screen.getByTestId("certifications-section");
     expect(container).toBeEmptyDOMElement();
