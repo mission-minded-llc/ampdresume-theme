@@ -9,13 +9,13 @@ const mockCertifications: Certification[] = [
   {
     name: "AWS Certified Solutions Architect",
     issuer: "Amazon Web Services",
-    dateAwarded: "1672531200000", // Jan 1, 2023 UTC
+    dateAwarded: "1672617600000", // Jan 2, 2023 UTC
     credentialUrl: "https://aws.amazon.com/certification/",
   },
   {
     name: "Google Cloud Professional Developer",
     issuer: "Google Cloud",
-    dateAwarded: "1672531200000", // Jan 1, 2023 UTC
+    dateAwarded: "1672617600000", // Jan 2, 2023 UTC
   },
 ];
 
