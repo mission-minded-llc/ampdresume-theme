@@ -1,3 +1,4 @@
+import { ThemeDavids, ThemeDefault, ThemeDefaultPDF } from "@/exports";
 import { ThemeDefinition, ThemeName } from "@/types";
 
 export { SOCIAL_MEDIA_PLATFORMS } from "./social";
@@ -7,6 +8,8 @@ export const titleSuffix = "| Amp'd Resume";
 export const themeDefinitions: Record<ThemeName, ThemeDefinition> = {
   default: {
     name: "Classic",
+    webComponent: ThemeDefault,
+    pdfComponent: ThemeDefaultPDF,
     description: "The default theme for Amp'd Resume. Single-page resume with expanding sections.",
     iconifyIcon: "fluent-emoji-flat:high-voltage",
     authors: [
@@ -19,6 +22,8 @@ export const themeDefinitions: Record<ThemeName, ThemeDefinition> = {
   },
   davids: {
     name: "David's Theme",
+    webComponent: ThemeDavids,
+    pdfComponent: null,
     description: "The theme by David Schurer. Multi-page resume with a QR code to share.",
     iconifyIcon: "fluent-emoji-flat:memo",
     authors: [

@@ -26,24 +26,24 @@ import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { QRGenerator } from "./components/QRGenerator";
 import { SkillsSection } from "./components/SkillsSection";
+import { Summary } from "./components/Summary";
 import { WorkExperienceSection } from "./components/WorkExperience";
 import { usePathname } from "next/navigation";
-import { Summary } from "./components/Summary";
 
 export const ThemeDavids = ({
-  themeAppearance = "light",
+  themeAppearance,
   user,
-  socials = [],
-  skillsForUser = [],
-  companies = [],
-  education = [],
+  socials,
+  skillsForUser,
+  companies,
+  education,
 }: {
-  themeAppearance?: ThemeAppearance;
-  user?: User;
-  socials?: Social[];
-  skillsForUser?: SkillForUser[];
-  companies?: Company[];
-  education?: EducationType[];
+  themeAppearance: ThemeAppearance;
+  user: User;
+  socials: Social[];
+  skillsForUser: SkillForUser[];
+  companies: Company[];
+  education: EducationType[];
 }) => {
   const [active, setActive] = useState<number>(0);
   const [currentUrl, setCurrentUrl] = useState<string>("");
