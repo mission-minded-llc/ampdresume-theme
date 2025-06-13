@@ -1,4 +1,4 @@
-import { ThemeDavids, ThemeDefault, ThemeDefaultPDF } from "@/exports";
+import { ThemeDavids, ThemeDefault, ThemeDefaultPDF } from "@/theme";
 import { ThemeDefinition, ThemeName } from "@/types";
 
 export { SOCIAL_MEDIA_PLATFORMS } from "./social";
