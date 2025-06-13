@@ -41,6 +41,25 @@ export type ThemeDefinition = {
   description: string;
   iconifyIcon: string;
   authors: ThemeAuthor[];
+
+  // TODO: Replace data types with ResumeData after the backend is updated to
+  // include the new fields for Certifications and FeaturedProjects.
+  webComponent: React.ComponentType<{
+    themeAppearance: ThemeAppearance;
+    user: User;
+    socials: Social[];
+    skillsForUser: SkillForUser[];
+    companies: Company[];
+    education: Education[];
+  }>;
+  pdfComponent: React.ComponentType<{
+    themeAppearance: ThemeAppearance;
+    user: User;
+    socials: Social[];
+    skillsForUser: SkillForUser[];
+    companies: Company[];
+    education: Education[];
+  }> | null;
 };
 
 /**

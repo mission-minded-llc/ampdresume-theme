@@ -15,6 +15,7 @@ export const ResumeView = ({ themeName }: { themeName: ThemeName }) => {
     case "davids":
       return (
         <ThemeDavids
+          themeAppearance={themeAppearance}
           user={themeDavidsSampleData.data.resume.user}
           socials={themeDavidsSampleData.data.resume.socials}
           skillsForUser={themeDavidsSampleData.data.resume.skillsForUser}
