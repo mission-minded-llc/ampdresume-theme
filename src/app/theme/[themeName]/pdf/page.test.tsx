@@ -1,8 +1,9 @@
 import Page, { generateMetadata } from "./page";
-import { themeDefinitions, titleSuffix } from "@/constants";
 
 import { ThemeName } from "@/types";
 import { render } from "@testing-library/react";
+import { themeDefinitions } from "@/theme";
+import { titleSuffix } from "@/constants";
 
 // Mock the PDFView component since we don't need to test its implementation
 jest.mock("../PDFView", () => ({

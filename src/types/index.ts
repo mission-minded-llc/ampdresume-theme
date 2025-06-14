@@ -37,9 +37,23 @@ export type ThemeAuthor = {
  * This interface is used to define the theme's name, description, and authors.
  */
 export type ThemeDefinition = {
+  // The name of the theme, which is used to display the theme in the UI.
+  // This is not the same as the slug, which is used to identify the theme in the URL
+  // and in the database of the backend. The slug is not a property here, because it comes
+  // from the key of the themeDefinitions object in the theme/index.ts file.
   name: string;
+
+  // Whether the theme is published to the Amp'd Resume site on production.
+  published: boolean;
+
+  // The description of the theme, which is used to describe the theme in the UI.
   description: string;
+
+  // The iconify icon of the theme, which is used to display the theme in the UI.
   iconifyIcon: string;
+
+  // The authors of the theme, which are used to display the authors of the theme in the UI,
+  // and in the SEO meta tags.
   authors: ThemeAuthor[];
 
   // TODO: Replace data types with ResumeData after the backend is updated to

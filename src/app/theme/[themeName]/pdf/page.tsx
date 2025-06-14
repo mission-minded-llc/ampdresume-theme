@@ -1,9 +1,9 @@
-import { themeDefinitions, titleSuffix } from "@/constants";
-
 import { Metadata } from "next";
 import { PDFView } from "../PDFView";
 import { ThemeName } from "@/types";
 import { notFound } from "next/navigation";
+import { themeDefinitions } from "@/theme";
+import { titleSuffix } from "@/constants";
 
 export async function generateMetadata({
   params,

@@ -1,8 +1,9 @@
 import Page, { generateMetadata } from "./page";
 import { render, screen } from "@testing-library/react";
-import { themeDefinitions, titleSuffix } from "@/constants";
 
 import { ThemeName } from "@/types";
+import { themeDefinitions } from "@/theme";
+import { titleSuffix } from "@/constants";
 
 // Mock the ResumeView component since we're only testing the page component
 jest.mock("./ResumeView", () => ({

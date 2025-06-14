@@ -15,7 +15,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { MuiLink } from "@/components/MuiLink";
 import { ThemeAppearanceToggle } from "./ThemeAppearanceToggle";
 import Typography from "@mui/material/Typography";
-import { themeDefinitions } from "@/constants";
+import { themeDefinitions } from "@/theme";
 
 export const NavPrimary = () => {
   const [isOpen, setIsOpen] = useState(false);
