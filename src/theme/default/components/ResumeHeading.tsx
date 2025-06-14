@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, Typography } from "@mui/material";
 import { Social, User } from "@/types";
 import { generateSocialUrl, getSocialIcon } from "@/util/social";

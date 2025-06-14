@@ -29,12 +29,27 @@ jest.mock("./components/Layout", () => ({
 describe("RootLayout", () => {
   const originalEnv = process.env;
 
+  // eslint-disable-next-line no-console
+  const originalConsoleError = console.error;
+
   beforeEach(() => {
     process.env = { ...originalEnv };
+
+    // Mock console.error to ignore the specific DOM nesting warning. This test renders the RootLayout
+    // component, which renders an <html> inside a <div>, which is not allowed by React.
+    // eslint-disable-next-line no-console
+    console.error = (...args) => {
+      if (typeof args[0] === "string" && args[0].includes("validateDOMNesting")) {
+        return;
+      }
+      originalConsoleError(...args);
+    };
   });
 
   afterEach(() => {
     process.env = originalEnv;
+    // eslint-disable-next-line no-console
+    console.error = originalConsoleError;
   });
 
   it("renders the layout with children", () => {

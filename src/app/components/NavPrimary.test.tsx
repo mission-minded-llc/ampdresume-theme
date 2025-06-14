@@ -32,10 +32,21 @@ jest.mock("./ThemeAppearanceToggle", () => ({
 // Mock the MuiLink component
 jest.mock("@/components/MuiLink", () => ({
   MuiLink: ({ children, href }: { children: React.ReactNode; href: string }) => (
-    <a href={href} data-testid={`nav-link-${href}`}>
+    <a href={href} data-testid={`nav-link-${href}`} onClick={(e) => e.preventDefault()}>
       {children}
     </a>
   ),
+}));
+
+// Mock next/navigation to prevent navigation errors
+jest.mock("next/navigation", () => ({
+  useRouter: () => ({
+    push: jest.fn(),
+    replace: jest.fn(),
+    prefetch: jest.fn(),
+  }),
+  usePathname: () => "",
+  useSearchParams: () => new URLSearchParams(),
 }));
 
 describe("NavPrimary", () => {
@@ -107,7 +118,7 @@ describe("NavPrimary", () => {
 
     // Click a navigation item
     const themeLink = screen.getByText("Default");
-    fireEvent.click(themeLink);
+    fireEvent.click(themeLink, { preventDefault: () => {} });
 
     // Wait for the drawer to close
     await waitFor(() => {
