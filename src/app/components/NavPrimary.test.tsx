@@ -6,16 +6,47 @@ import { ThemeProvider } from "@mui/material/styles";
 import { createTheme } from "@mui/material";
 
 // Mock the theme nav items
-jest.mock("@/theme/themeNavItems", () => ({
-  themeNavItems: [
-    { text: "Theme 1", href: "/theme1", icon: <div>Icon1</div> },
-    { text: "Theme 2", href: "/theme2", icon: <div>Icon2</div> },
-  ],
+jest.mock("@/constants/", () => ({
+  themeDefinitions: {
+    default: {
+      name: "Default",
+      description:
+        "The default theme for Amp'd Resume. Single-page resume with expanding sections.",
+      iconifyIcon: "fluent-emoji-flat:high-voltage",
+      authors: [
+        {
+          name: "Michael R. Dinerstein",
+          gitHubUrl: "https://github.com/missionmike",
+          linkedInUrl: "https://www.linkedin.com/in/michaeldinerstein/",
+        },
+      ],
+    },
+  },
 }));
 
 // Mock the ThemeAppearanceToggle component
 jest.mock("./ThemeAppearanceToggle", () => ({
   ThemeAppearanceToggle: () => <div data-testid="theme-toggle">Theme Toggle</div>,
+}));
+
+// Mock the MuiLink component
+jest.mock("@/components/MuiLink", () => ({
+  MuiLink: ({ children, href }: { children: React.ReactNode; href: string }) => (
+    <a href={href} data-testid={`nav-link-${href}`} onClick={(e) => e.preventDefault()}>
+      {children}
+    </a>
+  ),
+}));
+
+// Mock next/navigation to prevent navigation errors
+jest.mock("next/navigation", () => ({
+  useRouter: () => ({
+    push: jest.fn(),
+    replace: jest.fn(),
+    prefetch: jest.fn(),
+  }),
+  usePathname: () => "",
+  useSearchParams: () => new URLSearchParams(),
 }));
 
 describe("NavPrimary", () => {
@@ -64,8 +95,7 @@ describe("NavPrimary", () => {
     fireEvent.click(menuButton);
 
     // Check if theme items are rendered
-    expect(screen.getByText("Theme 1")).toBeInTheDocument();
-    expect(screen.getByText("Theme 2")).toBeInTheDocument();
+    expect(screen.getByText("Classic")).toBeInTheDocument();
   });
 
   it("renders the theme toggle", () => {
@@ -87,8 +117,8 @@ describe("NavPrimary", () => {
     fireEvent.click(menuButton);
 
     // Click a navigation item
-    const themeLink = screen.getByText("Theme 1");
-    fireEvent.click(themeLink);
+    const themeLink = screen.getByText("Classic");
+    fireEvent.click(themeLink, { preventDefault: () => {} });
 
     // Wait for the drawer to close
     await waitFor(() => {

@@ -1,8 +1,9 @@
 import Page, { generateMetadata } from "./page";
-import { themeAuthor, titleSuffix } from "@/constants";
 
 import { ThemeName } from "@/types";
 import { render } from "@testing-library/react";
+import { themeDefinitions } from "@/theme";
+import { titleSuffix } from "@/constants";
 
 // Mock the PDFView component since we don't need to test its implementation
 jest.mock("../PDFView", () => ({
@@ -28,35 +29,35 @@ describe("PDF Theme Page", () => {
 
       expect(metadata).toEqual({
         title: `PDF Theme: default ${titleSuffix}`,
-        description: "This is the default theme for Amp'd Resume.",
-        authors: [
-          {
-            name: themeAuthor?.default,
-          },
-        ],
+        description: themeDefinitions.default.description,
+        authors: themeDefinitions.default.authors.map((author) => ({
+          name: author.name,
+          url: author.gitHubUrl || author.linkedInUrl || "",
+        })),
         openGraph: {
           title: `PDF Theme: default ${titleSuffix}`,
-          description: "This is the default theme for Amp'd Resume.",
+          description: themeDefinitions.default.description,
           images: [],
         },
       });
     });
 
     it("generates correct metadata for custom theme with author", async () => {
-      const customThemeParams = Promise.resolve({ themeName: "modern" as ThemeName });
+      const customThemeParams = Promise.resolve({ themeName: "davids" as ThemeName });
       const metadata = await generateMetadata({ params: customThemeParams });
 
       expect(metadata).toEqual({
-        title: `PDF Theme: modern ${titleSuffix}`,
-        description: "This is the modern theme for Amp'd Resume.",
+        title: `PDF Theme: davids ${titleSuffix}`,
+        description: themeDefinitions.davids.description,
         authors: [
           {
-            name: themeAuthor?.modern || themeAuthor?.default,
+            name: themeDefinitions.davids.authors[0].name,
+            url: themeDefinitions.davids.authors[0].gitHubUrl,
           },
         ],
         openGraph: {
-          title: `PDF Theme: modern ${titleSuffix}`,
-          description: "This is the modern theme for Amp'd Resume.",
+          title: `PDF Theme: davids ${titleSuffix}`,
+          description: themeDefinitions.davids.description,
           images: [],
         },
       });

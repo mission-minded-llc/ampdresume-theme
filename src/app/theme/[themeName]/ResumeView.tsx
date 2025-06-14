@@ -1,8 +1,10 @@
 "use client";
 
+import { ThemeDavids, ThemeDefault } from "@/theme";
+
 import { ThemeAppearanceContext } from "@/app/components/ThemeContext";
-import { ThemeDefault } from "@/theme";
 import { ThemeName } from "@/types";
+import { themeDavidsSampleData } from "@/theme/davids/sampleData";
 import { themeDefaultSampleData } from "@/theme/sampleData";
 import { useContext } from "react";
 
@@ -10,6 +12,17 @@ export const ResumeView = ({ themeName }: { themeName: ThemeName }) => {
   const { themeAppearance } = useContext(ThemeAppearanceContext);
 
   switch (themeName) {
+    case "davids":
+      return (
+        <ThemeDavids
+          themeAppearance={themeAppearance}
+          user={themeDavidsSampleData.data.resume.user}
+          socials={themeDavidsSampleData.data.resume.socials}
+          skillsForUser={themeDavidsSampleData.data.resume.skillsForUser}
+          companies={themeDavidsSampleData.data.resume.companies}
+          education={themeDavidsSampleData.data.resume.education}
+        />
+      );
     case "default":
     default:
       return (

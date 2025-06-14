@@ -5,6 +5,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import HomeIcon from "@mui/icons-material/Home";
+import { Icon } from "@iconify/react";
 import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -14,7 +15,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { MuiLink } from "@/components/MuiLink";
 import { ThemeAppearanceToggle } from "./ThemeAppearanceToggle";
 import Typography from "@mui/material/Typography";
-import { themeNavItems } from "@/theme/themeNavItems";
+import { themeDefinitions } from "@/theme";
 
 export const NavPrimary = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -60,6 +61,7 @@ export const NavPrimary = () => {
         edge="start"
         color="inherit"
         aria-label="menu"
+        data-testid="nav-primary-menu-button"
         onClick={toggleDrawer(true)}
         sx={(theme) => ({
           mt: 1,
@@ -75,7 +77,14 @@ export const NavPrimary = () => {
         <MenuIcon fontSize="large" />
       </IconButton>
 
-      <Drawer anchor="left" open={isOpen} onClose={toggleDrawer(false)}>
+      <Drawer
+        anchor="left"
+        open={isOpen}
+        onClose={toggleDrawer(false)}
+        data-testid="nav-primary-menu"
+        data-is-open={isOpen}
+        component="nav"
+      >
         <Box
           sx={{
             width: 250,
@@ -94,7 +103,13 @@ export const NavPrimary = () => {
             }}
           >
             <Typography variant="h6">Menu</Typography>
-            <IconButton edge="end" color="inherit" aria-label="close" onClick={toggleDrawer(false)}>
+            <IconButton
+              edge="end"
+              color="inherit"
+              aria-label="close"
+              onClick={toggleDrawer(false)}
+              data-testid="nav-primary-menu-close-button"
+            >
               <CloseIcon />
             </IconButton>
           </Box>
@@ -115,8 +130,13 @@ export const NavPrimary = () => {
             <Typography variant="body1" sx={{ paddingLeft: 2, fontWeight: "bold" }}>
               Themes
             </Typography>
-            {themeNavItems.map((navItem) => (
-              <NavItem key={navItem.text} {...navItem} />
+            {Object.entries(themeDefinitions).map(([themeKey, themeDefinition]) => (
+              <NavItem
+                key={themeDefinition.name}
+                text={themeDefinition.name}
+                icon={<Icon icon={themeDefinition.iconifyIcon} />}
+                href={`/theme/${themeKey}`}
+              />
             ))}
           </List>
           <Box

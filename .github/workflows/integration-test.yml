@@ -1,0 +1,39 @@
+name: Integration Test
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+  workflow_dispatch:
+
+env:
+  NEXT_PUBLIC_ENVIRONMENT_NAME: test
+
+jobs:
+  integration-test:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - uses: ./.github/actions/setup-dependencies
+
+      - name: Build Next.js app
+        run: npm run build
+
+      - name: Start Next.js app
+        run: npm start &
+
+      - name: Run Cypress tests
+        run: npm run cypress:test
+
+      - name: Upload Cypress Screenshots
+        if: failure()
+        run: npm run cypress:upload:screenshots
+        env:
+          AWS_S3_USER_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_S3_USER_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_S3_BUCKET_NAME: ${{ vars.AWS_S3_BUCKET_NAME }}
+          AWS_REGION: ${{ vars.AWS_REGION }}

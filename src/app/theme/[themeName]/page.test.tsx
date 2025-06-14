@@ -1,8 +1,9 @@
 import Page, { generateMetadata } from "./page";
 import { render, screen } from "@testing-library/react";
-import { themeAuthor, titleSuffix } from "@/constants";
 
 import { ThemeName } from "@/types";
+import { themeDefinitions } from "@/theme";
+import { titleSuffix } from "@/constants";
 
 // Mock the ResumeView component since we're only testing the page component
 jest.mock("./ResumeView", () => ({
@@ -20,13 +21,13 @@ describe("Theme Page", () => {
       const metadata = await generateMetadata({ params });
 
       expect(metadata.title).toBe(`Theme: ${themeName} ${titleSuffix}`);
-      expect(metadata.description).toBe(`This is the ${themeName} theme for Amp'd Resume.`);
+      expect(metadata.description).toBe(themeDefinitions[themeName].description);
       expect(Array.isArray(metadata.authors) && metadata.authors[0]?.name).toBe(
-        themeAuthor?.default,
+        themeDefinitions.default.authors[0].name,
       );
       expect(metadata.openGraph).toEqual({
         title: `Theme: ${themeName} ${titleSuffix}`,
-        description: `This is the ${themeName} theme for Amp'd Resume.`,
+        description: themeDefinitions[themeName].description,
         images: [],
       });
     });
@@ -36,7 +37,9 @@ describe("Theme Page", () => {
       const customParams = Promise.resolve({ themeName: customThemeName });
       const metadata = await generateMetadata({ params: customParams });
 
-      const expectedAuthor = themeAuthor?.[customThemeName] || themeAuthor?.default;
+      const expectedAuthor =
+        themeDefinitions[customThemeName as ThemeName]?.authors[0].name ||
+        themeDefinitions.default.authors[0].name;
       expect(Array.isArray(metadata.authors) && metadata.authors[0]?.name).toBe(expectedAuthor);
     });
   });

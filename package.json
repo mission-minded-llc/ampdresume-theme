@@ -25,7 +25,9 @@
     "prettier": "prettier --check .",
     "types:check": "tsc --noEmit",
     "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "cypress:test": "cypress run",
+    "cypress:upload:screenshots": "tsx scripts/uploadCypressScreenshots.ts"
   },
   "repository": {
     "type": "git",
@@ -43,6 +45,7 @@
   },
   "homepage": "https://github.com/mission-minded-llc/ampdresume-theme#readme",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.821.0",
     "@iconify/react": "^5.0.2",
     "@mui/base": "^5.0.0-beta.68",
     "@mui/icons-material": "^6.2.0",
@@ -50,10 +53,13 @@
     "@mui/material-nextjs": "^6.1.8",
     "@mui/x-date-pickers": "^7.24.1",
     "@next/third-parties": "^15.0.3",
+    "@types/qrcode": "^1.5.5",
+    "cypress": "^14.2.0",
     "dayjs": "^1.11.13",
     "html-react-parser": "^5.2.1",
     "html2pdf.js": "^0.10.2",
     "next": "15.0.3",
+    "qrcode": "^1.5.4",
     "react": "^18.3.1",
     "react-color": "^2.19.3",
     "react-dom": "^18.3.1",
@@ -63,7 +69,8 @@
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-react": "^7.25.9",
     "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.1.0",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
     "@types/jest": "^29.5.14",
     "@types/node": "^20",
     "@types/react": "^18.3.12",
