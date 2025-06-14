@@ -95,7 +95,7 @@ describe("NavPrimary", () => {
     fireEvent.click(menuButton);
 
     // Check if theme items are rendered
-    expect(screen.getByText("Default")).toBeInTheDocument();
+    expect(screen.getByText("Classic")).toBeInTheDocument();
   });
 
   it("renders the theme toggle", () => {
@@ -117,7 +117,7 @@ describe("NavPrimary", () => {
     fireEvent.click(menuButton);
 
     // Click a navigation item
-    const themeLink = screen.getByText("Default");
+    const themeLink = screen.getByText("Classic");
     fireEvent.click(themeLink, { preventDefault: () => {} });
 
     // Wait for the drawer to close
