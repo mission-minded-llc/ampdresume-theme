@@ -5,4 +5,4 @@ export * from "@/types";
 
 export { groupSkillsForUserByYearExperience } from "@/util/structure";
 
-export { themeDefinitions } from "@/constants";
+export { themeDefinitions } from "@/theme";
