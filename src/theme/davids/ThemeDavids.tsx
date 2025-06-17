@@ -19,8 +19,7 @@ import {
   User,
 } from "@/types";
 import { generateSocialUrl, getSocialIcon } from "@/util/social";
-import { useEffect, useState, useContext } from "react";
-import { ThemeAppearanceContext } from "@/app/components/ThemeContext";
+import { useEffect, useState } from "react";
 
 import { Education } from "@/theme/components/Education/Education";
 import { Icon } from "@iconify/react";
@@ -32,6 +31,42 @@ import { SkillsSection } from "./components/SkillsSection";
 import { Summary } from "./components/Summary";
 import { WorkExperienceSection } from "./components/WorkExperience";
 import { usePathname } from "next/navigation";
+
+// Theme color constants
+const COLORS = {
+  navyBlue: "#0d47a1",
+  lightBlue: "#bbdefb",
+  darkNavy: "#0a1929",
+  darkSlate: "#1e293b",
+  brightBlue: "#60a5fa",
+  lightBlueHover: "#90caf9",
+  lightBlueBg: "#e3f2fd",
+  lightText: "#ADD8E6",
+  darkNavyDarker: "#08306b",
+  darkBlue: "#1e40af",
+  darkBlueHover: "#1d4ed8",
+  darkBlueBorder: "#3b82f6",
+} as const;
+
+// Social platform configurations
+const SOCIAL_PLATFORMS = {
+  "github.com": {
+    icon: "mdi:github",
+    url: (ref: string) => `https://github.com/${ref}`,
+  },
+  "linkedin.com": {
+    icon: "devicon:linkedin",
+    url: (ref: string) => `https://www.linkedin.com/in/${ref}`,
+  },
+  "x.com": {
+    icon: "ri:twitter-x-fill",
+    url: (ref: string) => `https://x.com/${ref}`,
+  },
+  "twitter.com": {
+    icon: "ri:twitter-x-fill",
+    url: (ref: string) => `https://x.com/${ref}`,
+  },
+} as const;
 
 export const ThemeDavids = ({
   themeAppearance,
@@ -48,10 +83,20 @@ export const ThemeDavids = ({
   companies: Company[];
   education: EducationType[];
 }) => {
-  const { themeAppearance: contextThemeAppearance } = useContext(ThemeAppearanceContext);
-  const themeAppearance = themeAppearanceProp ?? contextThemeAppearance ?? "light";
   const [active, setActive] = useState<number>(0);
   const [currentUrl, setCurrentUrl] = useState<string>("");
+
+  // Computed theme colors
+  const themeColors = {
+    text: themeAppearance === "dark" ? COLORS.lightText : COLORS.navyBlue,
+    background: themeAppearance === "dark" ? COLORS.darkNavy : COLORS.navyBlue,
+    paper: themeAppearance === "dark" ? COLORS.darkSlate : COLORS.lightBlue,
+    primary: themeAppearance === "dark" ? COLORS.brightBlue : COLORS.navyBlue,
+    buttonBg: themeAppearance === "dark" ? COLORS.darkBlue : COLORS.lightBlue,
+    buttonHover: themeAppearance === "dark" ? COLORS.darkBlueHover : COLORS.lightBlueHover,
+    buttonBorder: themeAppearance === "dark" ? COLORS.darkBlueBorder : COLORS.navyBlue,
+    hoverBg: themeAppearance === "dark" ? "transparent" : COLORS.lightBlueBg,
+  };
 
   const pathname = usePathname();
   const pdfUrl = `${pathname}/pdf`;
@@ -97,21 +142,21 @@ export const ThemeDavids = ({
     palette: {
       mode: themeAppearance,
       background: {
-        default: themeAppearance === "dark" ? "#0a1929" : "#0d47a1", // dark navy vs light blue
-        paper: themeAppearance === "dark" ? "#1e293b" : "#bbdefb", // dark slate vs light blue
+        default: themeColors.background,
+        paper: themeColors.paper,
       },
       primary: {
-        main: themeAppearance === "dark" ? "#60a5fa" : "#0d47a1", // bright blue vs navy
-        dark: themeAppearance === "dark" ? "#60a5fa" : "#08306b",
-        light: themeAppearance === "dark" ? "#60a5fa" : "#bbdefb", // skill pill background
+        main: themeColors.primary,
+        dark: themeAppearance === "dark" ? COLORS.brightBlue : COLORS.darkNavyDarker,
+        light: themeAppearance === "dark" ? COLORS.brightBlue : COLORS.lightBlue,
         contrastText: themeAppearance === "dark" ? "#ffffff" : "#000000",
       },
       secondary: {
-        main: themeAppearance === "dark" ? "#60a5fa" : "#1565c0",
+        main: themeAppearance === "dark" ? COLORS.brightBlue : "#1565c0",
       },
       text: {
-        primary: themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1",
-        secondary: themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1",
+        primary: themeColors.text,
+        secondary: themeColors.text,
       },
     },
     components: {
@@ -122,10 +167,10 @@ export const ThemeDavids = ({
           },
           outlinedPrimary: {
             color: themeAppearance === "dark" ? "#ffffff" : "#000000",
-            backgroundColor: themeAppearance === "dark" ? "#1e40af" : "#bbdefb",
-            borderColor: themeAppearance === "dark" ? "#3b82f6" : "#0d47a1",
+            backgroundColor: themeColors.buttonBg,
+            borderColor: themeColors.buttonBorder,
             "&:hover": {
-              backgroundColor: themeAppearance === "dark" ? "#1d4ed8" : "#90caf9",
+              backgroundColor: themeColors.buttonHover,
             },
           },
         },
@@ -133,32 +178,32 @@ export const ThemeDavids = ({
       MuiTabs: {
         styleOverrides: {
           indicator: {
-            backgroundColor: themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1",
+            backgroundColor: themeColors.text,
           },
         },
       },
       MuiIconButton: {
         styleOverrides: {
           root: {
-            color: `${themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1"} !important`,
+            color: `${themeColors.text} !important`,
             "&:hover": {
-              backgroundColor: themeAppearance === "dark" ? "transparent" : "#e3f2fd",
-              color: `${themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1"} !important`,
+              backgroundColor: themeColors.hoverBg,
+              color: `${themeColors.text} !important`,
             },
             "&:focus": {
-              backgroundColor: themeAppearance === "dark" ? "transparent" : "#e3f2fd",
-              color: `${themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1"} !important`,
+              backgroundColor: themeColors.hoverBg,
+              color: `${themeColors.text} !important`,
             },
             "&:active": {
-              backgroundColor: themeAppearance === "dark" ? "rgba(255, 255, 255, 0.05)" : "#bbdefb",
-              color: `${themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1"} !important`,
+              backgroundColor: themeAppearance === "dark" ? "rgba(255, 255, 255, 0.05)" : COLORS.lightBlue,
+              color: `${themeColors.text} !important`,
             },
             "&.Mui-focusVisible": {
-              backgroundColor: themeAppearance === "dark" ? "transparent" : "#e3f2fd",
-              color: `${themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1"} !important`,
+              backgroundColor: themeColors.hoverBg,
+              color: `${themeColors.text} !important`,
             },
             "& .MuiSvgIcon-root": {
-              color: `${themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1"} !important`,
+              color: `${themeColors.text} !important`,
             },
           },
         },
@@ -210,26 +255,18 @@ export const ThemeDavids = ({
           >
             {socials?.map((social) => {
               const platform = social.platform.toLowerCase();
-              let icon = getSocialIcon(social);
-              let url = generateSocialUrl(social);
+              const platformConfig = SOCIAL_PLATFORMS[platform as keyof typeof SOCIAL_PLATFORMS];
+              
+              const icon = platformConfig?.icon ?? getSocialIcon(social);
+              const url = platformConfig?.url(social.ref) ?? generateSocialUrl(social);
 
-              if (platform.includes("github")) {
-                icon = "mdi:github";
-                url = `https://github.com/${social.ref}`;
-              } else if (platform.includes("linkedin")) {
-                icon = "devicon:linkedin";
-                url = `https://www.linkedin.com/in/${social.ref}`;
-              } else if (platform.includes("twitter") || platform.includes("x")) {
-                icon = "ri:twitter-x-fill";
-                url = `https://x.com/${social.ref}`;
-              }
               return (
                 <a href={url} key={social.id} target="_blank" rel="noopener noreferrer">
                   <Icon
                     icon={icon}
                     width="30"
                     height="30"
-                    color={themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1"}
+                    color={themeColors.text}
                   />
                 </a>
               );
