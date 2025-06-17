@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Box,
   Fade,
@@ -27,24 +29,24 @@ import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { QRGenerator } from "./components/QRGenerator";
 import { SkillsSection } from "./components/SkillsSection";
+import { Summary } from "./components/Summary";
 import { WorkExperienceSection } from "./components/WorkExperience";
 import { usePathname } from "next/navigation";
-import { Summary } from "./components/Summary";
 
 export const ThemeDavids = ({
-  themeAppearance: themeAppearanceProp,
+  themeAppearance,
   user,
-  socials = [],
-  skillsForUser = [],
-  companies = [],
-  education = [],
+  socials,
+  skillsForUser,
+  companies,
+  education,
 }: {
-  themeAppearance?: ThemeAppearance;
-  user?: User;
-  socials?: Social[];
-  skillsForUser?: SkillForUser[];
-  companies?: Company[];
-  education?: EducationType[];
+  themeAppearance: ThemeAppearance;
+  user: User;
+  socials: Social[];
+  skillsForUser: SkillForUser[];
+  companies: Company[];
+  education: EducationType[];
 }) => {
   const { themeAppearance: contextThemeAppearance } = useContext(ThemeAppearanceContext);
   const themeAppearance = themeAppearanceProp ?? contextThemeAppearance ?? "light";

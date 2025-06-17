@@ -37,25 +37,44 @@ export type ThemeAuthor = {
  * This interface is used to define the theme's name, description, and authors.
  */
 export type ThemeDefinition = {
+  // The name of the theme, which is used to display the theme in the UI.
+  // This is not the same as the slug, which is used to identify the theme in the URL
+  // and in the database of the backend. The slug is not a property here, because it comes
+  // from the key of the themeDefinitions object in the theme/index.ts file.
   name: string;
-  description: string;
-  iconifyIcon: string;
-  authors: ThemeAuthor[];
-};
 
-/**
- * The FeaturedProject interface is used to define a project that is featured on the user's resume.
- * This interface is used to render the project in the UI, and is used to define the project's
- * name, tech stack, description, metrics, links, and skills.
- */
-export interface FeaturedProject {
-  name: string;
-  techStack: string;
-  description: string[];
-  metrics?: string;
-  links?: { label: string; url: string }[];
-  skillsForProject?: SkillForProject[];
-}
+  // Whether the theme is published to the Amp'd Resume site on production.
+  published: boolean;
+
+  // The description of the theme, which is used to describe the theme in the UI.
+  description: string;
+
+  // The iconify icon of the theme, which is used to display the theme in the UI.
+  iconifyIcon: string;
+
+  // The authors of the theme, which are used to display the authors of the theme in the UI,
+  // and in the SEO meta tags.
+  authors: ThemeAuthor[];
+
+  // TODO: Replace data types with ResumeData after the backend is updated to
+  // include the new fields for Certifications and FeaturedProjects.
+  webComponent: React.ComponentType<{
+    themeAppearance: ThemeAppearance;
+    user: User;
+    socials: Social[];
+    skillsForUser: SkillForUser[];
+    companies: Company[];
+    education: Education[];
+  }>;
+  pdfComponent: React.ComponentType<{
+    themeAppearance: ThemeAppearance;
+    user: User;
+    socials: Social[];
+    skillsForUser: SkillForUser[];
+    companies: Company[];
+    education: Education[];
+  }> | null;
+};
 
 /**
  * The ResumeData object is the main data object that contains all the user's information,
@@ -67,6 +86,9 @@ export interface ResumeData {
   socials: Social[];
   skillsForUser: SkillForUser[];
   companies: Company[];
+  // TODO: Ensure FeaturedProject and Certification are required after the backend is updated.
+  featuredProjects?: FeaturedProject[];
+  certifications?: Certification[];
   education: Education[];
 }
 
@@ -267,6 +289,38 @@ export interface Project {
 }
 
 /**
+ * A SkillForFeaturedProject is a single SkillForUser item associated with a featured project,
+ * which can include additional customized information such as a description.
+ */
+export interface SkillForFeaturedProject {
+  id: string;
+  description: string | null;
+
+  skillForUser: SkillForUser;
+}
+
+/**
+ * The FeaturedProject interface is used to define a project that is featured on the user's resume.
+ * This interface is used to render the project in the UI, and is used to define the project's
+ * name, description, links, and skills.
+ */
+export interface FeaturedProject {
+  id: string;
+
+  // The name of the featured project, e.g. "My Awesome Project"
+  name: string;
+
+  // The description of the featured project, e.g. "A description of my awesome project"
+  description: string | null;
+
+  // The links associated with the featured project, e.g. { label: "GitHub", url: "https://github.com/johndoe/my-awesome-project" }
+  links: { label: string; url: string }[];
+
+  // The skills associated with the featured project, which can contain one or more skills specific to this project.
+  skillsForFeaturedProject: SkillForFeaturedProject[];
+}
+
+/**
  * An Education is a single education item associated with a user's education history.
  */
 export interface Education {
@@ -293,8 +347,11 @@ export interface Certification {
   issuer: string;
 
   // Date Earned or Expected
-  date?: string;
+  dateAwarded: string;
 
-  // (Optional) Credential URL or ID
-  credentialUrl?: string;
+  // Credential URL
+  credentialUrl?: string | null;
+
+  // Credential ID
+  credentialId?: string | null;
 }

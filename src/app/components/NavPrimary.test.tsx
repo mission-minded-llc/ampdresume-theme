@@ -32,10 +32,21 @@ jest.mock("./ThemeAppearanceToggle", () => ({
 // Mock the MuiLink component
 jest.mock("@/components/MuiLink", () => ({
   MuiLink: ({ children, href }: { children: React.ReactNode; href: string }) => (
-    <a href={href} data-testid={`nav-link-${href}`}>
+    <a href={href} data-testid={`nav-link-${href}`} onClick={(e) => e.preventDefault()}>
       {children}
     </a>
   ),
+}));
+
+// Mock next/navigation to prevent navigation errors
+jest.mock("next/navigation", () => ({
+  useRouter: () => ({
+    push: jest.fn(),
+    replace: jest.fn(),
+    prefetch: jest.fn(),
+  }),
+  usePathname: () => "",
+  useSearchParams: () => new URLSearchParams(),
 }));
 
 describe("NavPrimary", () => {
@@ -84,7 +95,7 @@ describe("NavPrimary", () => {
     fireEvent.click(menuButton);
 
     // Check if theme items are rendered
-    expect(screen.getByText("Default")).toBeInTheDocument();
+    expect(screen.getByText("Classic")).toBeInTheDocument();
   });
 
   it("renders the theme toggle", () => {
@@ -106,8 +117,8 @@ describe("NavPrimary", () => {
     fireEvent.click(menuButton);
 
     // Click a navigation item
-    const themeLink = screen.getByText("Default");
-    fireEvent.click(themeLink);
+    const themeLink = screen.getByText("Classic");
+    fireEvent.click(themeLink, { preventDefault: () => {} });
 
     // Wait for the drawer to close
     await waitFor(() => {

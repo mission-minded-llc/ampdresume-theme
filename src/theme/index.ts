@@ -1,14 +1,41 @@
-import { ThemeName } from "@/types";
+import { ThemeDefinition, ThemeName } from "@/types";
 
-export { ThemeDefault } from "./default/ThemeDefault";
-export { ThemeDefaultPDF } from "./default/ThemeDefaultPDF";
-export { ThemeDavids } from "./davids/ThemeDavids";
+import { ThemeDavids } from "./davids/ThemeDavids";
+import { ThemeDefault } from "./default/ThemeDefault";
+import { ThemeDefaultPDF } from "./default/ThemeDefaultPDF";
 
-/**
- * The available themes for the web and PDF. These can be imported and iterated over
- * to determine which themes are available.
- */
-export const availableThemes: { web: ThemeName[]; pdf: ThemeName[] } = {
-  web: ["default", "davids"],
-  pdf: ["default"],
+// Using named exports here, because we want to be able to import the themes directly.
+export { ThemeDavids, ThemeDefault, ThemeDefaultPDF };
+
+export const themeDefinitions: Record<ThemeName, ThemeDefinition> = {
+  default: {
+    name: "Classic",
+    published: true,
+    webComponent: ThemeDefault,
+    pdfComponent: ThemeDefaultPDF,
+    description: "The default theme for Amp'd Resume. Single-page resume with expanding sections.",
+    iconifyIcon: "fluent-emoji-flat:high-voltage",
+    authors: [
+      {
+        name: "Michael R. Dinerstein",
+        gitHubUrl: "https://github.com/missionmike",
+        linkedInUrl: "https://www.linkedin.com/in/michaeldinerstein/",
+      },
+    ],
+  },
+  davids: {
+    name: "David's Theme",
+    published: false,
+    webComponent: ThemeDavids,
+    pdfComponent: null,
+    description: "The theme by David Schurer. Multi-page resume with a QR code to share.",
+    iconifyIcon: "fluent-emoji-flat:memo",
+    authors: [
+      {
+        name: "David Schurer",
+        gitHubUrl: "https://github.com/davidschurer",
+        linkedInUrl: "https://www.linkedin.com/in/david-schurer/",
+      },
+    ],
+  },
 };
