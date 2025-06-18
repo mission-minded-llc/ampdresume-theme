@@ -23,7 +23,6 @@ import { useEffect, useState } from "react";
 
 import { Education } from "@/theme/components/Education/Education";
 import { Icon } from "@iconify/react";
-import { MuiLink } from "@/components/MuiLink";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { QRGenerator } from "./components/QRGenerator";
@@ -195,7 +194,8 @@ export const ThemeDavids = ({
               color: `${themeColors.text} !important`,
             },
             "&:active": {
-              backgroundColor: themeAppearance === "dark" ? "rgba(255, 255, 255, 0.05)" : COLORS.lightBlue,
+              backgroundColor:
+                themeAppearance === "dark" ? "rgba(255, 255, 255, 0.05)" : COLORS.lightBlue,
               color: `${themeColors.text} !important`,
             },
             "&.Mui-focusVisible": {
@@ -256,18 +256,13 @@ export const ThemeDavids = ({
             {socials?.map((social) => {
               const platform = social.platform.toLowerCase();
               const platformConfig = SOCIAL_PLATFORMS[platform as keyof typeof SOCIAL_PLATFORMS];
-              
+
               const icon = platformConfig?.icon ?? getSocialIcon(social);
               const url = platformConfig?.url(social.ref) ?? generateSocialUrl(social);
 
               return (
                 <a href={url} key={social.id} target="_blank" rel="noopener noreferrer">
-                  <Icon
-                    icon={icon}
-                    width="30"
-                    height="30"
-                    color={themeColors.text}
-                  />
+                  <Icon icon={icon} width="30" height="30" color={themeColors.text} />
                 </a>
               );
             })}
@@ -283,7 +278,12 @@ export const ThemeDavids = ({
                 height="24"
                 color={themeAppearance === "dark" ? "#ADD8E6" : "#0d47a1"}
               />
-              <a href={pdfUrl} target="_blank" rel="noopener noreferrer" style={{ color: "inherit", textDecoration: "none" }}>
+              <a
+                href={pdfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "inherit", textDecoration: "none" }}
+              >
                 View PDF
               </a>
             </Typography>
