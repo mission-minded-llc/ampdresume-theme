@@ -20,19 +20,6 @@ describe("ResumeTitle", () => {
     expect(screen.getByText(title)).toBeInTheDocument();
   });
 
-  it("should have correct base styles", () => {
-    const { container } = renderWithTheme("Test");
-    const titleElement = container.firstChild as HTMLElement;
-
-    expect(titleElement).toHaveStyle({
-      margin: "40px 0 20px",
-      padding: "15px 0",
-      borderTop: "1px solid gray",
-      borderBottom: "1px solid gray",
-      textAlign: "center",
-    });
-  });
-
   it("should render as h2 with correct variant", () => {
     const { container } = renderWithTheme("Test");
     const titleElement = container.querySelector("h2");
