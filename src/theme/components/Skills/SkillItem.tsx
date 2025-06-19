@@ -33,20 +33,25 @@ export const SkillItem = ({ skill }: { skill: SkillForUser | SkillForProject }) 
         variant="outlined"
         color="primary"
         onClick={() => setIsOpen(true)}
-        sx={(theme) => ({
-          padding: "2px 10px !important",
-          color: theme.palette.mode === "dark" ? "#0a1929" : theme.palette.primary.main,
-          backgroundColor: theme.palette.primary.light,
-          boxShadow: `2px 2px 3px 0px ${theme.palette.primary.dark}`,
-          "&.Mui-disabled": {
-            color: theme.palette.primary.main,
-            borderColor: "transparent",
-            boxShadow: "none",
-          },
-          textTransform: "none",
-          gap: "8px",
-          borderColor: skill?.description ? "lawngreen" : theme.palette.primary.dark,
-        })}
+        sx={(theme) => {
+          const textColor = theme.palette.mode === "dark" ? "#0a1929" : theme.palette.primary.main;
+
+          return {
+            padding: "2px 10px !important",
+            color: textColor,
+            backgroundColor: theme.palette.primary.light,
+            boxShadow: `2px 2px 3px 0px ${theme.palette.primary.dark}`,
+            "&.Mui-disabled": {
+              color: `${textColor} !important`,
+              backgroundColor: `${theme.palette.primary.light} !important`,
+              borderColor: "transparent !important",
+              boxShadow: "none !important",
+            },
+            textTransform: "none",
+            gap: "8px",
+            borderColor: skill?.description ? "lawngreen" : theme.palette.primary.dark,
+          };
+        }}
       >
         {skillData?.icon ? (
           <Icon icon={skillData.icon} />
