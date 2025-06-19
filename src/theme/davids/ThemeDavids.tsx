@@ -106,7 +106,7 @@ export const ThemeDavids = ({
     }
   }, []);
 
-  const sections: { label: string; render: JSX.Element | null }[] = [
+  const sections: { label: string; render: React.ReactElement | null }[] = [
     {
       label: "Skills",
       render: skillsForUser?.length ? <SkillsSection skillsForUser={skillsForUser} /> : null,
