@@ -43,7 +43,7 @@ export const SkillItem = ({ skill }: { skill: SkillForUser | SkillForProject }) 
             boxShadow: `2px 2px 3px 0px ${theme.palette.primary.dark}`,
             "&.Mui-disabled": {
               color: `${textColor} !important`,
-              backgroundColor: `${theme.palette.primary.light} !important`,
+              backgroundColor: "rgb(238, 238, 238)",
               borderColor: "transparent !important",
               boxShadow: "none !important",
             },
