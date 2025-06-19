@@ -47,7 +47,7 @@ describe("Skills", () => {
     const skillElements = screen.getAllByText(/React|TypeScript|Python/);
 
     skillElements.forEach((element) => {
-      expect(element).toHaveStyle({ color: "maroon" });
+      expect(element).toHaveStyle({ color: "rgb(128, 0, 0)" });
     });
   });
 
