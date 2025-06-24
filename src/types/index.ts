@@ -18,7 +18,7 @@ export type ThemeAppearance = "dark" | "light";
  * dashes instead of spaces. This value is used to determine which theme gets rendered
  * on the Amp'd Resume site, and should be unique to each theme.
  */
-export type ThemeName = "default" | "davids"; // Add more themes here, e.g. "default" | "my-theme" | "another-theme"
+export type ThemeName = "default" | "davids" | "missionmike"; // Add more themes here, e.g. "default" | "my-theme" | "another-theme"
 
 /**
  * The ThemeAuthor interface is used to define the author of a theme

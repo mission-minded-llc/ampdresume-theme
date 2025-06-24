@@ -34,16 +34,18 @@ export const SkillItem = ({ skill }: { skill: SkillForUser | SkillForProject }) 
         color="primary"
         onClick={() => setIsOpen(true)}
         sx={(theme) => {
-          const textColor = theme.palette.mode === "dark" ? "#0a1929" : theme.palette.primary.main;
+          const color = theme.palette.mode === "dark" ? "#0a1929" : theme.palette.primary.main;
+          const backgroundColor =
+            theme.palette.mode === "dark" ? "#0a1929" : theme.palette.primary.light;
 
           return {
             padding: "2px 10px !important",
-            color: textColor,
-            backgroundColor: theme.palette.primary.light,
+            color,
+            backgroundColor,
             boxShadow: `2px 2px 3px 0px ${theme.palette.primary.dark}`,
             "&.Mui-disabled": {
-              color: `${textColor} !important`,
-              backgroundColor: "rgb(238, 238, 238)",
+              color,
+              backgroundColor,
               borderColor: "transparent !important",
               boxShadow: "none !important",
             },

@@ -3,6 +3,8 @@ import { ThemeDefinition, ThemeName } from "@/types";
 import { ThemeDavids } from "./davids/ThemeDavids";
 import { ThemeDefault } from "./default/ThemeDefault";
 import { ThemeDefaultPDF } from "./default/ThemeDefaultPDF";
+import { ThemeMissionMike } from "./missionmike/ThemeMissionMike";
+import { ThemeMissionMikePDF } from "./missionmike/ThemeMissionMikePDF";
 
 // Using named exports here, because we want to be able to import the themes directly.
 export { ThemeDavids, ThemeDefault, ThemeDefaultPDF };
@@ -35,6 +37,21 @@ export const themeDefinitions: Record<ThemeName, ThemeDefinition> = {
         name: "David Schurer",
         gitHubUrl: "https://github.com/davidschurer",
         linkedInUrl: "https://www.linkedin.com/in/david-schurer/",
+      },
+    ],
+  },
+  missionmike: {
+    name: "Mission Mike",
+    published: true,
+    webComponent: ThemeMissionMike,
+    pdfComponent: ThemeMissionMikePDF,
+    description: "The theme by Mission Mike. A modern, minimalistic theme.",
+    iconifyIcon: "fluent-color:design-ideas-24",
+    authors: [
+      {
+        name: "Michael R. Dinerstein",
+        gitHubUrl: "https://github.com/missionmike",
+        linkedInUrl: "https://www.linkedin.com/in/michaeldinerstein/",
       },
     ],
   },

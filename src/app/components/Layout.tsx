@@ -49,6 +49,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
             <Container
               sx={(theme) => ({
                 backgroundColor: theme.palette.background.default,
+                width: "100%",
               })}
             >
               <CssBaseline />
