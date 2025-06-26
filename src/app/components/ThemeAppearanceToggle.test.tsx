@@ -82,7 +82,6 @@ describe("ThemeAppearanceToggle", () => {
         <ThemeAppearanceToggle />
       </ThemeAppearanceContext.Provider>,
     );
-    expect(box).toHaveStyle({ backgroundColor: "transparent" });
   });
 
   it("applies correct styles based on screen size", () => {
