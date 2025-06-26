@@ -59,7 +59,7 @@
           "userId": "1",
           "skill": { "id": "5", "name": "Kubernetes", "icon": null },
           "icon": null,
-          "description": "Deployed and managed Kubernetes clusters.",
+          "description": null,
           "yearStarted": 2017,
           "totalYears": 7
         }
