@@ -25,7 +25,7 @@ export const themeDefinitions: Record<ThemeName, ThemeDefinition> = {
   },
   davids: {
     name: "David's Theme",
-    published: false,
+    published: true,
     webComponent: ThemeDavids,
     pdfComponent: null,
     description: "The theme by David Schurer. Multi-page resume with a QR code to share.",
